@@ -121,8 +121,6 @@ const categoriesData = [
         roomSize: "8x10",
         descriptionText: `Bathroom Suite Unit #${i + 1} with high-end marble finishes and glass partitions.`
       };
-    
-
     }),
   },
   {
@@ -205,14 +203,14 @@ const categoriesData = [
     id: "bedrooms",
     name: "Bedrooms",
     designsCount: 53,
-    image: "/Z.jpg",
+    image: "/z2.jpg",
     description: "Luxurious master and guest bedrooms.",
     designs: Array.from({ length: 53 }, (_, i) => {
       const num = (i % 6) + 1;
       return {
         id: i + 1,
         title: `Luxury Modern Bedroom House Concept #${i + 1}`,
-        image: `/Z.jpg${num}.jpg`,
+        image: `/l${num}.jpg`,
         thumbnails: ["/l3.jpg", "/l4.jpg"],
         frontView: `/l${num}.jpg`,
         backView: `/l5.jpg`,
@@ -318,16 +316,6 @@ const categoriesData = [
   },
 ];
 
-const brandLogos = [
-  { name: "Bayer", image: "/c1.jpg" },
-  { name: "Nippon Paint", image: "/m1.jpg" },
-  { name: "Sika", image: "/sika.jpg" },
-  { name: "Pakistan Cables", image: "/t1.jpg" },
-  { name: "Philips", image: "/s1.jpg" },
-  { name: "TurkPlast", image: "/p1.jpg" },
-  { name: "Diamond", image: "/l1.jpg" },
-];
-
 export default function InteriorApp() {
   const [selectedCategory, setSelectedCategory] = useState<any | null>(null);
   const [selectedDesign, setSelectedDesign] = useState<any | null>(null);
@@ -351,21 +339,6 @@ export default function InteriorApp() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans flex flex-col justify-between selection:bg-pink-500 selection:text-white">
       
-      <style jsx>{`
-        @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee-custom {
-          display: flex;
-          width: max-content;
-          animation: marquee 28s linear infinite;
-        }
-        .animate-marquee-custom:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-
       {/* Main App Content Container */}
       <div className="max-w-7xl mx-auto w-full p-6 sm:p-10 flex-grow">
 
@@ -583,84 +556,42 @@ export default function InteriorApp() {
 
       </div>
 
-      {/* --- FOOTER SECTION --- */}
-      <footer className="w-full bg-slate-950/90 backdrop-blur-md pt-12 pb-10 border-t border-white/10 shadow-2xl relative overflow-hidden mt-16">
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none"></div>
+      {/* PROFESSIONAL FOOTER */}
+      <footer className="bg-gradient-to-r from-gray-950 via-indigo-950 to-gray-950 text-gray-200 py-4 px-4 mt-auto border-t border-indigo-500/30 shadow-2xl">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          
+          <div>
+            <h3 className="text-sm font-bold text-indigo-400">GharPlans Pakistan</h3>
+            <p className="text-xs text-gray-300">📞 +92 3--------- | ✉️ shahzadirai55@gmail.com</p>
+            <p className="text-[10px] text-gray-400">© 2026 GharPlans Pakistan. All rights reserved.</p>
+          </div>
 
-        <div className="max-w-7xl mx-auto px-4 mb-6 text-center">
-          <p className="text-xs uppercase tracking-widest font-black text-pink-400">Trusted Brands & Partners</p>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 mb-12">
-          <div className="relative w-full overflow-hidden">
-            <div className="flex gap-8 items-center animate-marquee-custom">
-              {brandLogos.concat(brandLogos).map((brand, index) => (
-                <div
-                  key={`brand-${index}`}
-                  className="flex items-center justify-center min-w-[160px] h-24 bg-slate-900/90 border border-white/10 rounded-2xl shadow-xl px-6 py-4 transition-all duration-300 hover:scale-105 hover:border-pink-500/50 group"
-                >
-                  <div className="relative w-28 h-12 rounded-full overflow-hidden bg-white/5 flex items-center justify-center p-2">
-                    <img
-                      src={brand.image}
-                      alt={brand.name}
-                      className="w-full h-full object-cover rounded-full transition duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                </div>
-              ))}
+          <div className="flex flex-col items-center md:items-end gap-1.5">
+            <span className="text-xs font-semibold text-indigo-300">Connect With Us:</span>
+            <div className="flex items-center gap-2">
+              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="WhatsApp">🟢</a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="Facebook">📘</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="Instagram">📸</a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="YouTube">▶️</a>
+              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="TikTok">🎵</a>
+              <a href="https://imo.im" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="IMO">💬</a>
             </div>
           </div>
-        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12 relative z-10">
-          <div className="space-y-4">
-            <h3 className="text-white font-bold text-lg tracking-wide">Interior & Homes</h3>
-            <p className="text-sm leading-relaxed text-slate-400">
-              Transforming the way you build and design your dream spaces with verified concepts, layouts, and architectural designs.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4 tracking-wider uppercase">Quick Links</h4>
-            <ul className="space-y-2.5 text-sm text-slate-400">
-              <li><a href="#" className="hover:text-pink-400 transition">Home Designs</a></li>
-              <li><a href="#" className="hover:text-pink-400 transition">Categories</a></li>
-              <li><a href="#" className="hover:text-pink-400 transition">Saved Homes</a></li>
-              <li><a href="#" className="hover:text-pink-400 transition">Contact Support</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4 tracking-wider uppercase">Top Categories</h4>
-            <ul className="space-y-2.5 text-sm text-slate-400">
-              <li><a href="#" className="hover:text-pink-400 transition">Bedrooms & Suites</a></li>
-              <li><a href="#" className="hover:text-pink-400 transition">TV Lounges</a></li>
-              <li><a href="#" className="hover:text-pink-400 transition">Modern Bathrooms</a></li>
-              <li><a href="#" className="hover:text-pink-400 transition">False Ceilings</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4 tracking-wider uppercase">Contact Us</h4>
-            <p className="text-sm text-slate-400 mb-2">Email: support@interiorhomes.pk</p>
-            <p className="text-sm text-slate-400 mb-4">Phone: +92 300 1234567</p>
-            <div className="flex gap-3">
-              <span className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-white text-xs hover:bg-pink-600 transition cursor-pointer">f</span>
-              <span className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-white text-xs hover:bg-pink-600 transition cursor-pointer">t</span>
-              <span className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-white text-xs hover:bg-pink-600 transition cursor-pointer">in</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-          <p>© 2026 Interior & Homes. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 sm:mt-0">
-            <a href="#" className="hover:text-slate-400 transition">Privacy Policy</a>
-            <a href="#" className="hover:text-slate-400 transition">Terms of Service</a>
-          </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <a 
+          href="https://whatsapp.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full flex items-center justify-center shadow-xl transition transform hover:scale-110 text-3xl"
+        >
+          💬
+        </a>
+      </div>
 
     </div>
   );

@@ -220,16 +220,6 @@ const productsData = [
   },
 ];
 
-const brandLogos = [
-  { name: "Bayer", image: "saprey.jpg" },
-  { name: "Nippon Paint", image: "nipp.jpg" },
-  { name: "Sika", image: "sika.jpg" },
-  { name: "Pakistan Cables", image: "pa.jpg" },
-  { name: "Philips", image: "pl.jpg" },
-  { name: "TurkPlast", image: "turk.jpg" },
-  { name: "Diamond", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=200&q=80" },
-];
-
 export default function ShopSection() {
   const [activeCategory, setActiveCategory] = useState("All Products");
   const [searchQuery, setSearchQuery] = useState("");
@@ -485,51 +475,42 @@ export default function ShopSection() {
         </div>
       )}
 
-      {/* --- FOOTER MATCHING YOUR EXACT IMAGE --- */}
-      <footer className="w-full bg-[#0b0f19] border-t border-slate-800 text-slate-400 pt-16 pb-8 mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
+     {/* PROFESSIONAL FOOTER */}
+      <footer className="bg-gradient-to-r from-gray-950 via-indigo-950 to-gray-950 text-gray-200 py-4 px-4 mt-auto border-t border-indigo-500/30 shadow-2xl">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           
-          {/* Left Details */}
-          <div className="space-y-3">
-            <h3 className="text-blue-400 font-semibold text-base tracking-wide">GharPlans Pakistan</h3>
-            <p className="text-sm text-slate-400 flex items-center gap-2">
-              📞 +92 3----------
-            </p>
-            <p className="text-sm text-slate-400 flex items-center gap-2">
-              ✉️ shahzadirai55@gmail.com
-            </p>
-            <p className="text-xs text-slate-500 pt-2">
-              © 2026 GharPlans Pakistan. All rights reserved.
-            </p>
+          <div>
+            <h3 className="text-sm font-bold text-indigo-400">GharPlans Pakistan</h3>
+            <p className="text-xs text-gray-300">📞 +92 3--------- | ✉️ shahzadirai55@gmail.com</p>
+            <p className="text-[10px] text-gray-400">© 2026 GharPlans Pakistan. All rights reserved.</p>
           </div>
 
-          {/* Right Action Icons / Connect Section matching screenshot */}
-          <div className="flex flex-col items-start md:items-end gap-3">
-            <span className="text-xs font-semibold text-slate-400">Connect With Us:</span>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-white cursor-pointer shadow-md transition">
-                🟢
-              </div>
-              <div className="w-10 h-10 rounded-full bg-blue-900/40 hover:bg-blue-800/60 flex items-center justify-center text-white cursor-pointer shadow-md transition border border-blue-500/30">
-                📘
-              </div>
-              <div className="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-white cursor-pointer shadow-md transition">
-                📸
-              </div>
-              <div className="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white cursor-pointer shadow-md transition">
-                ▶️
-              </div>
-              <div className="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-white cursor-pointer shadow-md transition">
-                🎵
-              </div>
-              <div className="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-white cursor-pointer shadow-md transition">
-                💬
-              </div>
+          <div className="flex flex-col items-center md:items-end gap-1.5">
+            <span className="text-xs font-semibold text-indigo-300">Connect With Us:</span>
+            <div className="flex items-center gap-2">
+              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="WhatsApp">🟢</a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="Facebook">📘</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="Instagram">📸</a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="YouTube">▶️</a>
+              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="TikTok">🎵</a>
+              <a href="https://imo.im" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-indigo-900/40 hover:bg-indigo-600/60 border border-indigo-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="IMO">💬</a>
             </div>
           </div>
 
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <a 
+          href="https://whatsapp.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full flex items-center justify-center shadow-xl transition transform hover:scale-110 text-3xl"
+        >
+          💬
+        </a>
+      </div>
 
     </div>
   );

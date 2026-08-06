@@ -1,6 +1,6 @@
 import "./globals.css";
 import Navbar from "./component/navbar/navbar";
-
+import GharPlansBlogsNew from "./component/footer";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -12,6 +12,7 @@ export default function RootLayout({
         <Navbar />
         
         {children}
+        <GharPlansBlogsNew />
       </body>
     </html>
   );
