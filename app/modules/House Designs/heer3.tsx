@@ -107,33 +107,32 @@ export default function BacksideSittingSection() {
   const [activeCard, setActiveCard] = useState<BacksideSittingPlan | null>(null);
 
   return (
-    <section className="py-12 bg-gradient-to-b from-slate-50 via-purple-50/30 to-slate-50 font-sans">
+    <section className="py-12 bg-gradient-to-r from-purple-950 via-purple-900 to-indigo-950 text-gray-100 font-sans">
       <div className="max-w-7xl mx-auto px-4 space-y-12">
         
         {/* SECTION HEADER */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <span className="bg-purple-100 text-[#8C3499] text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xs">
+          <span className="bg-purple-900/80 text-purple-200 border border-purple-700/60 text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xs">
             🌳 Exclusive Concept
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-purple-950 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
             Modern Backside Open Sitting Area Designs
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Experience the luxury of fresh airflow, natural sunlight, and peaceful outdoor relaxation with our specially engineered <span className="font-bold text-[#8C3499]">Backside Open Sitting & Backyard Decks</span> across all plot sizes.
+          <p className="text-xs sm:text-sm text-purple-200/80 leading-relaxed">
+            Experience the luxury of fresh airflow, natural sunlight, and peaceful outdoor relaxation with our specially engineered <span className="font-bold text-purple-300">Backside Open Sitting & Backyard Decks</span> across all plot sizes.
           </p>
         </div>
 
         {/* 1. VIDEO BANNER SECTION */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm sm:text-base font-bold text-purple-950 flex items-center gap-2">
+            <h3 className="text-sm sm:text-base font-bold text-purple-200 flex items-center gap-2">
               <span>▶️</span> Watch Walkthrough: Backside Sitting Concept
             </h3>
-            <span className="text-xs font-semibold text-[#8C3499]">High Definition Preview</span>
+            <span className="text-xs font-semibold text-purple-300">High Definition Preview</span>
           </div>
 
-          <div className="relative w-full h-[280px] sm:h-[450px] rounded-3xl overflow-hidden shadow-2xl border-2 border-purple-100 bg-slate-950">
-            {/* Yahan aap apna video tag ya YouTube iframe laga sakte hain */}
+          <div className="relative w-full h-[280px] sm:h-[450px] rounded-3xl overflow-hidden shadow-2xl border-2 border-purple-700/50 bg-slate-950">
             <video 
               autoPlay 
               loop 
@@ -142,19 +141,18 @@ export default function BacksideSittingSection() {
               className="w-full h-full object-cover opacity-90"
             >
               <source src="/ve1.mp4" type="video/mp4" />
-              {/* Fallback agar video load na ho toh image ya text show hoga */}
               Your browser does not support the video tag.
             </video>
 
             {/* Video Overlay Info */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-8">
-              <span className="bg-[#8C3499] text-white text-[10px] font-extrabold px-3 py-1 rounded-md w-max mb-2 uppercase">
+              <span className="bg-purple-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-md w-max mb-2 uppercase">
                 Featured Walkthrough
               </span>
               <h4 className="text-white text-base sm:text-xl font-bold">
                 How We Optimize Backyard Space & Open Seating in Pakistan Homes
               </h4>
-              <p className="text-gray-300 text-xs sm:text-sm mt-1 max-w-2xl">
+              <p className="text-purple-200 text-xs sm:text-sm mt-1 max-w-2xl">
                 Discover architectural tips on ventilation, privacy walls, and cozy sitting arrangements right at the back of your house.
               </p>
             </div>
@@ -163,11 +161,11 @@ export default function BacksideSittingSection() {
 
         {/* 2. 10 CARDS GRID SECTION */}
         <div className="space-y-6 pt-4">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-            <h3 className="text-base sm:text-lg font-extrabold text-purple-950 flex items-center gap-2">
+          <div className="flex items-center justify-between border-b border-purple-800/60 pb-3">
+            <h3 className="text-base sm:text-lg font-extrabold text-purple-200 flex items-center gap-2">
               <span>🏡</span> 10 Backside Sitting Layout Options (1 Marla to 10 Kanal)
             </h3>
-            <span className="text-xs text-slate-500">Click any card to explore</span>
+            <span className="text-xs text-purple-300/70">Click any card to explore</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -175,7 +173,7 @@ export default function BacksideSittingSection() {
               <div 
                 key={plan.id}
                 onClick={() => setActiveCard(plan)}
-                className="bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-xl border border-slate-200 flex flex-col transition-all duration-300 group cursor-pointer"
+                className="bg-purple-950/90 rounded-2xl overflow-hidden shadow-lg hover:shadow-purple-700/50 border border-purple-700/40 flex flex-col transition-all duration-300 group cursor-pointer hover:border-purple-400"
               >
                 {/* Card Image */}
                 <div className="relative h-48 overflow-hidden bg-slate-900">
@@ -185,7 +183,7 @@ export default function BacksideSittingSection() {
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                  <span className="absolute top-3 left-3 bg-[#8C3499] text-white text-[10px] font-extrabold px-2.5 py-1 rounded-lg shadow">
+                  <span className="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-lg shadow">
                     #{index + 1} • {plan.size}
                   </span>
                   <span className="absolute bottom-3 left-3 text-white text-xs font-semibold bg-black/40 backdrop-blur px-2.5 py-1 rounded-md">
@@ -195,23 +193,23 @@ export default function BacksideSittingSection() {
 
                 {/* Card Content */}
                 <div className="p-5 flex flex-col flex-1 space-y-3">
-                  <h4 className="text-sm sm:text-base font-bold text-purple-950 group-hover:text-[#8C3499] transition leading-snug">
+                  <h4 className="text-sm sm:text-base font-bold text-purple-100 group-hover:text-purple-300 transition leading-snug">
                     {plan.title}
                   </h4>
-                  <p className="text-xs text-slate-500 line-clamp-2">
+                  <p className="text-xs text-purple-300/70 line-clamp-2">
                     {plan.description}
                   </p>
 
                   {/* Features */}
-                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 flex-1">
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-purple-800/60 flex-1">
                     {plan.features.map((feat, idx) => (
-                      <span key={idx} className="bg-purple-50 text-purple-900 text-[10px] font-bold px-2 py-0.5 rounded-md border border-purple-100">
+                      <span key={idx} className="bg-purple-900/60 text-purple-200 text-[10px] font-bold px-2 py-0.5 rounded-md border border-purple-700/50">
                         ✓ {feat}
                       </span>
                     ))}
                   </div>
 
-                  <button className="w-full mt-2 py-2.5 bg-purple-950 hover:bg-[#8C3499] text-white text-xs font-bold rounded-xl transition shadow cursor-pointer">
+                  <button className="w-full mt-2 py-2.5 bg-purple-900 hover:bg-purple-600 text-white text-xs font-bold rounded-xl transition shadow cursor-pointer">
                     View Sitting Layout Details
                   </button>
                 </div>
@@ -224,28 +222,28 @@ export default function BacksideSittingSection() {
 
       {/* POPUP MODAL FOR CARD CLICK */}
       {activeCard && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
-          <div className="bg-white border border-purple-200 rounded-3xl max-w-xl w-full p-6 relative shadow-2xl space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-purple-950/80 backdrop-blur-md p-4">
+          <div className="bg-purple-950 border border-purple-400/50 rounded-3xl max-w-xl w-full p-6 relative shadow-2xl space-y-4">
             <button 
               onClick={() => setActiveCard(null)}
-              className="absolute top-4 right-4 bg-slate-100 hover:bg-[#8C3499] hover:text-white text-slate-700 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition cursor-pointer"
+              className="absolute top-4 right-4 bg-purple-900/80 hover:bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition cursor-pointer"
             >
               ✕
             </button>
 
-            <span className="bg-purple-100 text-[#8C3499] text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">
+            <span className="bg-purple-900/80 text-purple-200 border border-purple-700/60 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">
               {activeCard.size} Backside Sitting Concept
             </span>
 
-            <h3 className="text-lg font-extrabold text-purple-950">
+            <h3 className="text-lg font-extrabold text-white">
               {activeCard.title}
             </h3>
 
-            <div className="h-48 rounded-xl overflow-hidden bg-slate-900">
+            <div className="h-48 rounded-xl overflow-hidden bg-slate-900 border border-purple-700/50">
               <img src={activeCard.image} alt={activeCard.title} className="w-full h-full object-cover" />
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-purple-200/80 leading-relaxed">
               {activeCard.description} This layout ensures private outdoor seating, proper sunlight penetration, and modern aesthetic value at the rear end of your house.
             </p>
 
@@ -260,7 +258,7 @@ export default function BacksideSittingSection() {
               </a>
               <button 
                 onClick={() => setActiveCard(null)}
-                className="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl font-bold text-xs transition cursor-pointer"
+                className="px-5 py-3 bg-purple-900 hover:bg-purple-800 text-purple-200 rounded-xl font-bold text-xs transition cursor-pointer"
               >
                 Close
               </button>

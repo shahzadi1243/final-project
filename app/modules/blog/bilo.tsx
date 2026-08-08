@@ -12,7 +12,7 @@ const blogPosts = [
     date: "August 2026",
     readTime: "6 min read",
     author: "GharPlans Expert",
-    image: "/1.jpg",
+    image: "/bi.jpg",
     snippet: "Living in a spacious home is what a 1 kanal / 20 marla house promises, but how can that dream be realised? Let's break down the exact estimates...",
     content: `Constructing a 1 Kanal (20 Marla) house in Pakistan requires careful financial planning. The total cost is generally divided into two major phases: Grey Structure and Finishing.\n\n1. Grey Structure Cost:\nThis includes excavation, foundation, damp-proof course, RCC framework, brick masonry, plastering, roof slab casting, and underground water tanks. For a 1 Kanal house having a covered area of around 4,500 to 5,000 sq ft, the grey structure typically consumes 45% to 50% of the total budget.\n\n2. Finishing Cost:\nFinishing includes flooring (tiles/wood), electrical wiring and fixtures, plumbing, kitchen cabinets, wardrobes, paint, doors, windows, and bathroom fittings. Quality of materials drastically dictates this portion.\n\nPro Tip: Always keep a 10% contingency buffer in your total construction budget for unexpected price fluctuations of steel and cement.`
   },
@@ -23,7 +23,7 @@ const blogPosts = [
     date: "July 2026",
     readTime: "4 min read",
     author: "Landscape Architect",
-    image: "/2.jpg",
+    image: "/pond.jpg",
     snippet: "Transform your lawn or courtyard into a serene paradise with these 6 modern garden pond and water fountain ideas tailored for Pakistani climates...",
     content: `Water features add a tranquil, cooling effect to Pakistani homes, which often face scorching summer months. Incorporating a pond requires proper planning regarding waterproofing, filtration systems, and water recirculation.\n\n1. Formal Geometric Ponds: Perfect for modern minimalist villas.\n2. Naturalistic Koi Ponds: Surrounded by rocks and aquatic plants.\n3. Wall-Mounted Water Cascades: Great for small backyards or terraces.\n\nMake sure to include a mechanical biological filter to prevent algae buildup in Lahore or Karachi's humid/hot environments.`
   },
@@ -34,7 +34,7 @@ const blogPosts = [
     date: "July 2026",
     readTime: "5 min read",
     author: "Interior Designer",
-    image: "/3.jpg",
+    image: "/dicor.jpg",
     snippet: "Exposed concrete finishes, metallic accents, and raw industrial aesthetics are taking over urban Pakistani home interiors. Here is how to style it...",
     content: `Industrial design isn't just for warehouses anymore. In cities like Islamabad and Lahore, homeowners are embracing raw, unfinished looks combined with lush tropical greenery.\n\nKey Elements:\n- Exposed brick or concrete textured walls.\n- Black matte iron staircase railings and light fixtures.\n- Warm yellow lighting to balance the cold grey tones.\n- Indoor tropical palms like Monstera and Areca to soften the robust look.`
   },
@@ -45,7 +45,7 @@ const blogPosts = [
     date: "June 2026",
     readTime: "4 min read",
     author: "Furniture Specialist",
-    image: "/4.jpg",
+    image: "/bedrom.jpg",
     snippet: "Discover trending hydraulic storage bed frames, upholstered velvet headboards, and custom wooden platform designs for modern bedrooms...",
     content: `Your bedroom is your sanctuary. In 2026, functionality meets luxury in Pakistani interior trends.\n\n- Hydraulic Storage Beds: Essential for maximizing space in urban apartments and smaller houses.\n- Fluted Wooden Panels: Wall paneling behind the bed headboard is currently dominating master bedroom aesthetics.\n- Neutral & Earthy Tones: Off-whites, muted greys, and warm walnut wood finishes are replacing high-gloss laminates.`
   },
@@ -100,6 +100,10 @@ export default function GharPlansBlogsNew() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#070B14] text-slate-100 selection:bg-amber-500 selection:text-slate-950 font-sans">
+      
+      {/* GharPlans Official Navigation Bar */}
+      <Navbar />
+
       <div className="flex-1 py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         
         {/* Header Section */}
@@ -299,10 +303,41 @@ export default function GharPlansBlogsNew() {
 
       </div>
 
-      {/* Footer */}
+      {/* Footer & Floating WhatsApp */}
       <Footer />
       <FloatingWhatsApp />
     </div>
+  );
+}
+
+// GharPlans Official Navbar Component
+function Navbar() {
+  return (
+    <nav className="bg-[#10172A]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800 px-4 sm:px-8 py-3.5 shadow-lg">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        
+        {/* Logo Section */}
+        <div className="flex items-center gap-2.5">
+          <span className="text-2xl">🏗️</span>
+          <span className="text-xl font-extrabold tracking-tight text-white">
+            Ghar<span className="text-amber-400">Plans</span>
+          </span>
+        </div>
+
+        {/* Navigation Links / Icons */}
+        <div className="flex items-center gap-4 text-slate-300 text-sm">
+          <button className="hidden sm:block hover:text-amber-400 transition font-medium">Home</button>
+          <button className="hidden sm:block hover:text-amber-400 transition font-medium">Plans</button>
+          <button className="hidden sm:block hover:text-amber-400 transition font-medium text-amber-400">Blogs</button>
+          <div className="flex items-center gap-3 pl-2 border-l border-slate-700">
+            <span className="cursor-pointer hover:text-amber-400 transition" title="Notifications">🔔</span>
+            <span className="cursor-pointer hover:text-amber-400 transition" title="Wishlist">❤️</span>
+            <span className="cursor-pointer hover:text-amber-400 transition" title="User Profile">👤</span>
+          </div>
+        </div>
+
+      </div>
+    </nav>
   );
 }
 
