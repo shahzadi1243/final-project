@@ -24,7 +24,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "1 Marla",
     description: "Smartly managed small rear cut for fresh air circulation and compact outdoor seating.",
     features: ["Mini Open Air", "Fresh Air Duct", "Exhaust Friendly"],
-    image: "/cn.jpg",
+    image: "/-1.jpg",
   },
   {
     id: "bs2",
@@ -32,7 +32,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "3 Marla",
     description: "A private rear corner designed for evening tea and small family gatherings.",
     features: ["Tea Lounge", "Wall Planters", "Cozy Corner"],
-    image: "/3marla.jpg",
+    image: "/--2.jpg",
   },
   {
     id: "bs3",
@@ -40,7 +40,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "5 Marla",
     description: "Most demandable modern layout featuring a vertical garden wall and seating space at the back.",
     features: ["Vertical Garden", "BBQ Space", "Glass Sliding Door"],
-    image: "/5m.jpg",
+    image: "/---3.jpg",
   },
   {
     id: "bs4",
@@ -48,7 +48,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "7 Marla",
     description: "Spacious rear lawn extension with custom outdoor seating chairs and subtle lighting.",
     features: ["Lawn Extension", "Outdoor Lighting", "Paved Walkway"],
-    image: "/7m.jpg",
+    image: "/-4.jpg",
   },
   {
     id: "bs5",
@@ -56,7 +56,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "10 Marla",
     description: "Executive level rear patio connected with the main kitchen for seamless outdoor dining.",
     features: ["Outdoor Dining", "BBQ Counter", "Sleek Pergola"],
-    image: "/10.jpg",
+    image: "/-5.jpg",
   },
   {
     id: "bs6",
@@ -64,7 +64,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "1 Kanal",
     description: "Palatial backyard layout featuring a custom-built gazebo overlooking swimming pool deck.",
     features: ["Luxury Gazebo", "Poolside View", "Lounge Sofas"],
-    image: "/PN.jpg",
+    image: "/-6.jpg",
   },
   {
     id: "bs7",
@@ -72,7 +72,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "2 Kanal",
     description: "Extensive lush green backyard retreat with multi-tier seating and water fountains.",
     features: ["Water Fountain", "Multi-tier Seating", "Exotic Plants"],
-    image: "/one.jpg",
+    image: "/-7.jpg",
   },
   {
     id: "bs8",
@@ -80,7 +80,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "4 Kanal",
     description: "Resort style open-air pavilion at the rear with panoramic landscape views.",
     features: ["Open Pavilion", "Valley View", "Fire Pit"],
-    image: "/4km.jpg",
+    image: "/-8.jpg",
   },
   {
     id: "bs9",
@@ -88,7 +88,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "10 Kanal",
     description: "Custom imperial architecture featuring traditional Mughal-inspired open rear courtyard.",
     features: ["Royal Courtyard", "Marble Deck", "Grand Pillars"],
-    image: "/10KANAL.Jpg",
+    image: "/=1.Jpg",
   },
   {
     id: "bs10",
@@ -96,7 +96,7 @@ const backsidePlansData: BacksideSittingPlan[] = [
     size: "Custom",
     description: "Modern architectural marvel with seamless indoor-outdoor rear sitting transition.",
     features: ["Seamless Flow", "Glass Railing", "Sunset View"],
-    image: "/cn.jpg",
+    image: "/-10.jpg",
   },
 ];
 
@@ -141,7 +141,7 @@ export default function BacksideSittingSection() {
               playsInline 
               className="w-full h-full object-cover opacity-90"
             >
-              <source src="/sample-video.mp4" type="video/mp4" />
+              <source src="/ve1.mp4" type="video/mp4" />
               {/* Fallback agar video load na ho toh image ya text show hoga */}
               Your browser does not support the video tag.
             </video>
