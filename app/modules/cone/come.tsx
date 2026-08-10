@@ -6,16 +6,75 @@ import Image from "next/image";
 export default function App() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  // Main content data
+  const sections = [
+    {
+      title: "House Design",
+      subtitle: "Modern Architecture",
+      description: "Explore exceptional modern house layouts, stunning elevations, and high-quality construction plans tailored specifically to your lifestyle and needs.",
+      image: "/vi.jpg",
+    },
+    {
+      title: "Construction Calculators",
+      subtitle: "Smart Estimation",
+      description: "Calculate your material requirements efficiently—from concrete and bricks to steel estimates—saving both your precious time and budget.",
+      image: "/vi1.jpg",
+    },
+    {
+      title: "Shop",
+      subtitle: "Trusted Products",
+      description: "Get access to Pakistan's finest termite control solutions, waterproofing sprays, and construction essentials delivered right to your doorstep.",
+      image: "/vi2.jpg",
+    },
+    {
+      title: "Our Projects",
+      subtitle: "Portfolio",
+      description: "Take a look at our expert engineering, solid grey structures, and high-end interior and exterior execution across various prime locations.",
+      image: "/vi3.jpg",
+    },
+    {
+      title: "Interior Design",
+      subtitle: "Aesthetics & Living",
+      description: "Bring elegance into every room with custom ceiling layouts, modern kitchen woodwork, and ambient lighting designs tailored for your home.",
+      image: "/vi4.jpg",
+    },
+    {
+      title: "Grey Structure",
+      subtitle: "Structural Integrity",
+      description: "Built to last using top-tier steel, branded cement, and professional supervision to guarantee lifetime foundation safety for your family.",
+      image: "/vi5.jpg",
+    },
+    {
+      title: "Protection Services",
+      subtitle: "Preventive Care",
+      description: "Safeguard your property from seepage, dampness, and termites using professional chemical treatments backed by reliable service warranties.",
+      image: "/vi6.jpg",
+    },
+    {
+      title: "Turnkey Contracts",
+      subtitle: "End-to-End Solutions",
+      description: "Leave everything to us from map approvals down to final handover keys. Enjoy a totally stress-free building process managed by expert contractors.",
+      image: "/vi7.jpg",
+    },
+    {
+      title: "Maps & Approvals",
+      subtitle: "Legal & Planning",
+      description: "Get precise 2D/3D architectural designs, structural drawings, and hassle-free NOC documentation approved smoothly from housing authorities.",
+      image: "/vi8.jpg",
+    },
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col bg-purple-950 font-sans text-slate-100">
+    <div style={{ backgroundColor: "#1a0b2e", minHeight: "100vh", color: "#f3e8ff", width: "100%" }} className="flex flex-col font-sans">
       
-      {/* Normal Top Navbar - Bilkul saaf aur top par */}
-      <div className="w-full bg-purple-950 shadow-lg border-b border-purple-900 z-50">
+      {/* Normal Top Navbar */}
+      <div style={{ backgroundColor: "#1a0b2e" }} className="w-full shadow-lg border-b border-purple-900 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
           <div className="flex items-center gap-3">
             <a
               href="/"
-              className="px-4 py-2 bg-gradient-to-r from-purple-800 to-indigo-900 text-white rounded-xl font-bold text-sm shadow-md hover:opacity-95 transition flex items-center gap-2 border border-purple-700/50"
+              style={{ backgroundColor: "#2e1065" }}
+              className="px-4 py-2 text-white rounded-xl font-bold text-sm shadow-md hover:opacity-95 transition flex items-center gap-2 border border-purple-700/50"
             >
               🏠 Gharplans
             </a>
@@ -26,13 +85,14 @@ export default function App() {
           <div className="relative">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="px-4 py-2 bg-purple-900/80 text-purple-200 rounded-xl font-bold text-sm hover:bg-purple-900 transition flex items-center gap-2 cursor-pointer border border-purple-700/50"
+              style={{ backgroundColor: "#2e1065" }}
+              className="px-4 py-2 text-purple-200 rounded-xl font-bold text-sm hover:bg-purple-900 transition flex items-center gap-2 cursor-pointer border border-purple-700/50"
             >
               Menu ▾
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-56 bg-purple-900 rounded-2xl shadow-2xl border border-purple-700 py-2 z-50">
+              <div style={{ backgroundColor: "#2e1065" }} className="absolute right-0 mt-2 w-56 rounded-2xl shadow-2xl border border-purple-700 py-2 z-50 animate-fadeIn">
                 <a href="#calculator" className="block px-4 py-2.5 text-sm text-purple-200 hover:bg-purple-800 hover:text-white font-medium transition">
                   Construction Calculator
                 </a>
@@ -50,116 +110,96 @@ export default function App() {
 
       {/* Main Content */}
       <main className="flex-1 py-12">
-        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 space-y-20 md:space-y-28">
+        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 space-y-16">
           
-          {/* Row 1 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="bg-purple-900/40 backdrop-blur-sm rounded-3xl p-6 shadow-2xl border border-purple-800/60 space-y-4 hover:-translate-y-2 hover:shadow-purple-900/50 transition-all duration-300 group cursor-pointer">
-              <h3 className="text-2xl font-black text-white group-hover:text-purple-300 transition-colors text-center">House Design</h3>
-              <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow-inner bg-slate-900">
-                <Image src="/1.jpg" alt="House Design" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+          {sections.map((section, index) => {
+            const isEven = index % 2 === 0;
+            
+            // Image component to be reused
+            const ServiceImage = () => (
+              <div className="relative h-64 sm:h-72 rounded-3xl overflow-hidden shadow-inner bg-purple-950 border-4 border-purple-950 group-hover:border-amber-400/60 transition-colors duration-500">
+                <Image 
+                  src={section.image} 
+                  alt={section.title} 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-            </div>
+            );
 
-            <div className="space-y-4 px-2 sm:px-4 text-center md:text-left">
-              <span className="text-purple-300 font-bold uppercase tracking-widest text-xs bg-purple-900/80 px-3.5 py-1.5 rounded-full inline-block border border-purple-700/50 shadow-sm">
-                Modern Architecture
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-                Create Your Dream House Design With Experts
-              </h2>
-              <p className="text-purple-200/80 text-sm sm:text-base leading-relaxed">
-                Explore exceptional modern house layouts, stunning elevations, and high-quality construction plans tailored specifically to your lifestyle and needs.
-              </p>
-            </div>
-          </div>
-
-          {/* Row 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="space-y-4 px-2 sm:px-4 text-center md:text-left order-2 md:order-1">
-              <span className="text-purple-300 font-bold uppercase tracking-widest text-xs bg-purple-900/80 px-3.5 py-1.5 rounded-full inline-block border border-purple-700/50 shadow-sm">
-                Smart Estimation
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-                Accurate Construction Calculators
-              </h2>
-              <p className="text-purple-200/80 text-sm sm:text-base leading-relaxed">
-                Calculate your material requirements efficiently—from concrete and bricks to steel estimates—saving both your precious time and budget.
-              </p>
-            </div>
-
-            <div className="bg-purple-900/40 backdrop-blur-sm rounded-3xl p-6 shadow-2xl border border-purple-800/60 space-y-4 hover:-translate-y-2 hover:shadow-purple-900/50 transition-all duration-300 group cursor-pointer order-1 md:order-2">
-              <h3 className="text-2xl font-black text-white group-hover:text-purple-300 transition-colors text-center">Construction Calculators</h3>
-              <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow-inner bg-slate-900">
-                <Image src="/2.jpg" alt="Construction Calculators" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+            // Content component to be reused
+            const ServiceContent = () => (
+              <div className="space-y-4 px-2 sm:px-4 text-center md:text-left">
+                <span style={{ backgroundColor: "#2e1065" }} className="text-amber-300 font-black uppercase tracking-widest text-xs px-3.5 py-1.5 rounded-full inline-block border border-purple-700/50 shadow-sm transition-all group-hover:scale-110 group-hover:bg-amber-900/40">
+                  {section.subtitle}
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight group-hover:text-amber-300 transition-colors duration-300">
+                  {section.title}
+                </h2>
+                <p className="text-purple-100 text-sm sm:text-base leading-relaxed">
+                  {section.description}
+                </p>
+                <button 
+                  className="mt-4 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-purple-950 font-black rounded-full text-sm shadow-lg shadow-amber-500/20 transition transform group-hover:translate-x-2 cursor-pointer"
+                >
+                  Explore Now →
+                </button>
               </div>
-            </div>
-          </div>
+            );
 
-          {/* Row 3 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="bg-purple-900/40 backdrop-blur-sm rounded-3xl p-6 shadow-2xl border border-purple-800/60 space-y-4 hover:-translate-y-2 hover:shadow-purple-900/50 transition-all duration-300 group cursor-pointer">
-              <h3 className="text-2xl font-black text-white group-hover:text-purple-300 transition-colors text-center">Shop</h3>
-              <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow-inner bg-slate-900">
-                <Image src="/3.jpg" alt="Shop" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+            return (
+              <div 
+                key={index} 
+                className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#2e1065]/60 backdrop-blur-sm rounded-[40px] p-6 sm:p-8 border border-purple-800/80 shadow-2xl hover:border-amber-500/60 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(251,191,36,0.3)] transition-all duration-500 group cursor-pointer"
+              >
+                {/* Image Container */}
+                <div className={`md:col-span-5 ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+                  <ServiceImage />
+                </div>
+
+                {/* Text Content Container */}
+                <div className={`md:col-span-7 ${isEven ? 'md:order-2' : 'md:order-1'}`}>
+                  <ServiceContent />
+                </div>
+                
+                {/* Glowing Border Line (Middle Seperator) */}
+                <div className="absolute left-0 right-0 bottom-0 h-0.5 bg-purple-800/60 group-hover:bg-amber-500/30 transition-colors duration-500 rounded-full"></div>
               </div>
-            </div>
-
-            <div className="space-y-4 px-2 sm:px-4 text-center md:text-left">
-              <span className="text-purple-300 font-bold uppercase tracking-widest text-xs bg-purple-900/80 px-3.5 py-1.5 rounded-full inline-block border border-purple-700/50 shadow-sm">
-                Trusted Products
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-                Top Quality Materials & Chemicals
-              </h2>
-              <p className="text-purple-200/80 text-sm sm:text-base leading-relaxed">
-                Get access to Pakistan's finest termite control solutions, waterproofing sprays, and construction essentials delivered right to your doorstep.
-              </p>
-            </div>
-          </div>
-
-          {/* Row 4 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="space-y-4 px-2 sm:px-4 text-center md:text-left order-2 md:order-1">
-              <span className="text-purple-300 font-bold uppercase tracking-widest text-xs bg-purple-900/80 px-3.5 py-1.5 rounded-full inline-block border border-purple-700/50 shadow-sm">
-                Portfolio
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-                Explore Our Ongoing & Finished Projects
-              </h2>
-              <p className="text-purple-200/80 text-sm sm:text-base leading-relaxed">
-                Take a look at our expert engineering, solid grey structures, and high-end interior and exterior execution across various prime locations.
-              </p>
-            </div>
-
-            <div className="bg-purple-900/40 backdrop-blur-sm rounded-3xl p-6 shadow-2xl border border-purple-800/60 space-y-4 hover:-translate-y-2 hover:shadow-purple-900/50 transition-all duration-300 group cursor-pointer order-1 md:order-2">
-              <h3 className="text-2xl font-black text-white group-hover:text-purple-300 transition-colors text-center">Our Projects</h3>
-              <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow-inner bg-slate-900">
-                <Image src="/1.jpg" alt="Our Projects" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-              </div>
-            </div>
-          </div>
+            );
+          })}
 
         </div>
       </main>
 
       {/* Slim Footer with Social Icons */}
-      <footer className="bg-purple-950 text-purple-200 py-3 px-6 border-t border-purple-900">
+      <footer style={{ backgroundColor: "#1a0b2e" }} className="text-purple-200 py-3 px-6 border-t border-purple-900">
         <div className="container mx-auto max-w-screen-xl flex flex-col sm:flex-row items-center justify-between text-xs gap-3">
           <p>© 2026 Gharplans.pk. All rights reserved.</p>
           
           <div className="flex items-center gap-3 text-sm">
-            <a href="#facebook" title="Facebook" className="hover:text-white transition">📘</a>
-            <a href="#tiktok" title="TikTok" className="hover:text-white transition">🎵</a>
-            <a href="#youtube" title="YouTube" className="hover:text-white transition">▶️</a>
-            <a href="#imo" title="IMO" className="hover:text-white transition">💬</a>
-            <a href="#instagram" title="Instagram" className="hover:text-white transition">📸</a>
-            <a href="#whatsapp" title="WhatsApp" className="hover:text-white transition">🟢</a>
+            <a href="#facebook" title="Facebook" className="hover:text-amber-400 transition">📘</a>
+            <a href="#tiktok" title="TikTok" className="hover:text-amber-400 transition">🎵</a>
+            <a href="#youtube" title="YouTube" className="hover:text-amber-400 transition">▶️</a>
+            <a href="#imo" title="IMO" className="hover:text-amber-400 transition">💬</a>
+            <a href="#instagram" title="Instagram" className="hover:text-amber-400 transition">📸</a>
+            <a href="#whatsapp" title="WhatsApp" className="hover:text-green-400 transition">🟢</a>
           </div>
 
           <p className="text-purple-300 font-medium">Built with precision</p>
         </div>
       </footer>
+
+      {/* CSS for FadeIn Animation */}
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 }

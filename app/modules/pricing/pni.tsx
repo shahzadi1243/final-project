@@ -66,11 +66,11 @@ export default function DesigningPricesPage() {
 
   const tableData = getCurrentTableData();
 
-  // Welcome Screen with your selected logo image
+  // Welcome Screen
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-purple-950 flex flex-col items-center justify-center text-white z-50 space-y-4">
-        <div className="bg-white p-4 rounded-2xl shadow-2xl animate-bounce">
+      <div className="fixed inset-0 bg-[#2e1065] flex flex-col items-center justify-center text-white z-50 space-y-4">
+        <div className="bg-[#3b0764] p-4 rounded-2xl shadow-2xl animate-bounce border border-purple-800">
           <img src="/pg4.png" alt="Logo" className="h-20 w-auto object-contain" />
         </div>
         <h1 className="text-2xl sm:text-3xl font-black tracking-wider text-purple-200 animate-pulse">
@@ -81,21 +81,22 @@ export default function DesigningPricesPage() {
     );
   }
 
-  // Main Page Content
+  // Main Page Content (Dark Purple Theme)
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
+    <div style={{ backgroundColor: "#2e1065", minHeight: "100vh", color: "#ffffff", width: "100%" }} className="flex flex-col font-sans">
       
       {/* Navbar Section */}
-      <nav className="w-full bg-white shadow-sm px-6 py-4 flex items-center justify-between border-b border-slate-200">
+      <nav style={{ backgroundColor: "#3b0764" }} className="w-full shadow-sm px-6 py-4 flex items-center justify-between border-b border-purple-900">
         <div className="flex items-center gap-3">
-          <img src="/pg4.png" alt="Logo" className="h-9 w-auto object-contain" />
+          <img src="/pg4.png" alt="Logo" className="h-9 w-auto object-contain bg-white p-1 rounded-lg" />
           <a
             href="/"
-            className="px-4 py-2 bg-purple-900 text-white rounded-xl font-bold text-sm shadow hover:bg-purple-800 transition flex items-center gap-2"
+            style={{ backgroundColor: "#2e1065" }}
+            className="px-4 py-2 text-white rounded-xl font-bold text-sm shadow hover:bg-black transition flex items-center gap-2 border border-purple-700"
           >
             🏠 Home
           </a>
-          <span className="text-xs font-semibold text-slate-500">Designing Prices Page</span>
+          <span className="text-xs font-semibold text-purple-300">Designing Prices Page</span>
         </div>
       </nav>
 
@@ -104,30 +105,32 @@ export default function DesigningPricesPage() {
         
         {/* Header Title & Subtitle */}
         <div className="text-center space-y-3">
-          <h1 className="text-3xl sm:text-4xl font-black text-purple-950 tracking-tight">Designing Prices</h1>
-          <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">Designing Prices</h1>
+          <p className="text-sm sm:text-base text-purple-200 max-w-xl mx-auto">
             Select your plot size and see the pricing for Layout, Structure, Interior, and BoQs.
           </p>
 
           {/* Pricing Tier Switcher */}
           <div className="flex justify-center pt-4">
-            <div className="inline-flex bg-white p-1.5 rounded-2xl border border-slate-200 shadow-sm gap-2">
+            <div style={{ backgroundColor: "#3b0764" }} className="inline-flex p-1.5 rounded-2xl border border-purple-800 shadow-sm gap-2">
               <button
                 onClick={() => setPricingType("premium")}
-                className={`px-6 py-2.5 rounded-xl font-bold text-sm transition cursor-pointer ${
+                style={{ backgroundColor: pricingType === "premium" ? "#2e1065" : "transparent" }}
+                className={`px-6 py-2.5 rounded-xl font-bold text-sm transition cursor-pointer border ${
                   pricingType === "premium"
-                    ? "bg-purple-900 text-white shadow"
-                    : "text-slate-600 hover:bg-slate-100"
+                    ? "border-purple-600 text-white shadow"
+                    : "border-transparent text-purple-300 hover:bg-purple-800/50"
                 }`}
               >
                 Premium Pricing
               </button>
               <button
                 onClick={() => setPricingType("budget")}
-                className={`px-6 py-2.5 rounded-xl font-bold text-sm transition cursor-pointer ${
+                style={{ backgroundColor: pricingType === "budget" ? "#2e1065" : "transparent" }}
+                className={`px-6 py-2.5 rounded-xl font-bold text-sm transition cursor-pointer border ${
                   pricingType === "budget"
-                    ? "bg-purple-900 text-white shadow"
-                    : "text-slate-600 hover:bg-slate-100"
+                    ? "border-purple-600 text-white shadow"
+                    : "border-transparent text-purple-300 hover:bg-purple-800/50"
                 }`}
               >
                 Budget Pricing
@@ -137,23 +140,25 @@ export default function DesigningPricesPage() {
 
           {/* Basement Switcher */}
           <div className="flex justify-center pt-2">
-            <div className="inline-flex bg-white p-1.5 rounded-2xl border border-slate-200 shadow-sm gap-2">
+            <div style={{ backgroundColor: "#3b0764" }} className="inline-flex p-1.5 rounded-2xl border border-purple-800 shadow-sm gap-2">
               <button
                 onClick={() => setBasementType("without")}
-                className={`px-5 py-2 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer ${
+                style={{ backgroundColor: basementType === "without" ? "#2e1065" : "transparent" }}
+                className={`px-5 py-2 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer border ${
                   basementType === "without"
-                    ? "bg-purple-900 text-white shadow"
-                    : "text-slate-600 hover:bg-slate-100"
+                    ? "border-purple-600 text-white shadow"
+                    : "border-transparent text-purple-300 hover:bg-purple-800/50"
                 }`}
               >
                 Without Basement
               </button>
               <button
                 onClick={() => setBasementType("with")}
-                className={`px-5 py-2 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer ${
+                style={{ backgroundColor: basementType === "with" ? "#2e1065" : "transparent" }}
+                className={`px-5 py-2 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer border ${
                   basementType === "with"
-                    ? "bg-purple-900 text-white shadow"
-                    : "text-slate-600 hover:bg-slate-100"
+                    ? "border-purple-600 text-white shadow"
+                    : "border-transparent text-purple-300 hover:bg-purple-800/50"
                 }`}
               >
                 With Basement (+20%)
@@ -163,11 +168,11 @@ export default function DesigningPricesPage() {
         </div>
 
         {/* Pricing Data Table Section */}
-        <div className="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden">
+        <div style={{ backgroundColor: "#3b0764" }} className="rounded-3xl shadow-md border border-purple-800 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-purple-900 text-white text-xs sm:text-sm uppercase tracking-wider">
+                <tr style={{ backgroundColor: "#2e1065" }} className="text-white text-xs sm:text-sm uppercase tracking-wider border-b border-purple-900">
                   <th className="py-4 px-6 font-bold">PLOT SIZE</th>
                   <th className="py-4 px-6 font-bold">Layout, 2D & 3D Front Elevation & Working Drawings</th>
                   <th className="py-4 px-6 font-bold">Structure, Plumbing & Electrical Drawings</th>
@@ -175,53 +180,53 @@ export default function DesigningPricesPage() {
                   <th className="py-4 px-6 font-bold">BoQs</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+              <tbody className="divide-y divide-purple-900 text-xs sm:text-sm text-purple-100">
                 {tableData.map((row, index) => (
-                  <tr key={index} className="hover:bg-purple-50/40 transition">
-                    <td className="py-4 px-6 font-semibold text-slate-900">{row.plotSize}</td>
-                    <td className="py-4 px-6">{row.col1}</td>
-                    <td className="py-4 px-6">{row.col2}</td>
-                    <td className="py-4 px-6">{row.col3}</td>
-                    <td className="py-4 px-6">{row.col4}</td>
+                  <tr key={index} className="hover:bg-purple-950/40 transition">
+                    <td className="py-4 px-6 font-semibold text-white">{row.plotSize}</td>
+                    <td className="py-4 px-6 text-purple-200">{row.col1}</td>
+                    <td className="py-4 px-6 text-purple-200">{row.col2}</td>
+                    <td className="py-4 px-6 text-purple-200">{row.col3}</td>
+                    <td className="py-4 px-6 text-purple-200">{row.col4}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <div className="p-6 bg-slate-50 border-t border-slate-200 flex justify-center">
-            <button className="px-8 py-3 bg-white border border-purple-900 text-purple-900 hover:bg-purple-900 hover:text-white font-bold rounded-xl shadow-sm transition cursor-pointer">
+          <div style={{ backgroundColor: "#2e1065" }} className="p-6 border-t border-purple-900 flex justify-center">
+            <button className="px-8 py-3 bg-[#3b0764] border border-purple-700 text-white hover:bg-purple-800 font-bold rounded-xl shadow-sm transition cursor-pointer">
               Get Started
             </button>
           </div>
         </div>
 
         {/* Construction Quote Banner */}
-        <div className="bg-purple-900 rounded-3xl p-8 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+        <div style={{ backgroundColor: "#3b0764" }} className="rounded-3xl p-8 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg border border-purple-800">
           <div className="space-y-2 text-center md:text-left">
             <h2 className="text-xl sm:text-2xl font-black">Need your house to be constructed and need a quote</h2>
             <p className="text-xs sm:text-sm text-purple-200 max-w-2xl">
               We understand that every project is unique. Contact us for a tailored quotation of the house according to your budget, specific requirements and material selection
             </p>
           </div>
-          <button className="px-6 py-3 bg-white text-purple-950 font-bold text-sm rounded-xl shadow-md hover:bg-purple-50 transition whitespace-nowrap cursor-pointer">
+          <button style={{ backgroundColor: "#2e1065" }} className="px-6 py-3 text-white border border-purple-700 font-bold text-sm rounded-xl shadow-md hover:bg-black transition whitespace-nowrap cursor-pointer">
             Contact Us
           </button>
         </div>
 
         {/* Supervision Services Section */}
-        <div className="bg-purple-900 rounded-3xl p-8 sm:p-10 text-white space-y-6 shadow-lg">
+        <div style={{ backgroundColor: "#3b0764" }} className="rounded-3xl p-8 sm:p-10 text-white space-y-6 shadow-lg border border-purple-800">
           <h2 className="text-xl sm:text-2xl font-bold border-b border-purple-800 pb-4">Supervision Services Prices</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white text-slate-900 p-6 rounded-2xl shadow-sm space-y-2">
-              <h3 className="font-bold text-lg text-purple-950">Lahore</h3>
-              <p className="text-sm text-slate-600">Rs. 20,000 per visit</p>
+            <div style={{ backgroundColor: "#2e1065" }} className="p-6 rounded-2xl shadow-sm space-y-2 border border-purple-700">
+              <h3 className="font-bold text-lg text-white">Lahore</h3>
+              <p className="text-sm text-purple-200">Rs. 20,000 per visit</p>
             </div>
-            <div className="bg-white text-slate-900 p-6 rounded-2xl shadow-sm space-y-2">
-              <h3 className="font-bold text-lg text-purple-950">Other Cities</h3>
-              <p className="text-sm text-slate-600">Contact for details</p>
-              <p className="text-xs font-semibold text-slate-500">
-                Please contact <span className="text-purple-700 font-bold">0315-5111119</span> for more details.
+            <div style={{ backgroundColor: "#2e1065" }} className="p-6 rounded-2xl shadow-sm space-y-2 border border-purple-700">
+              <h3 className="font-bold text-lg text-white">Other Cities</h3>
+              <p className="text-sm text-purple-200">Contact for details</p>
+              <p className="text-xs font-semibold text-purple-300">
+                Please contact <span className="text-purple-400 font-bold">0315-5111119</span> for more details.
               </p>
             </div>
           </div>
@@ -229,15 +234,15 @@ export default function DesigningPricesPage() {
 
         {/* Ready to Start Footer Callout */}
         <div className="text-center space-y-4 py-6">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Ready to Start Your Project?</h2>
-          <p className="text-sm text-slate-600 max-w-md mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-black text-white">Ready to Start Your Project?</h2>
+          <p className="text-sm text-purple-200 max-w-md mx-auto">
             Contact us today for a free consultation and let us help you bring your dream project to life.
           </p>
           <div className="flex justify-center gap-4 pt-2">
-            <button className="px-6 py-3 bg-white border border-purple-900 text-purple-900 hover:bg-purple-50 font-bold text-sm rounded-xl shadow-sm transition cursor-pointer">
+            <button style={{ backgroundColor: "#3b0764" }} className="px-6 py-3 border border-purple-700 text-white hover:bg-purple-800 font-bold text-sm rounded-xl shadow-sm transition cursor-pointer">
               Get Cost Estimation
             </button>
-            <button className="px-6 py-3 bg-purple-900 text-white hover:bg-purple-800 font-bold text-sm rounded-xl shadow-md transition cursor-pointer">
+            <button style={{ backgroundColor: "#3b0764" }} className="px-6 py-3 border border-purple-600 text-white hover:bg-purple-800 font-bold text-sm rounded-xl shadow-md transition cursor-pointer">
               Contact Us
             </button>
           </div>
@@ -246,14 +251,14 @@ export default function DesigningPricesPage() {
       </main>
 
       {/* Styled Cohesive Footer */}
-      <footer className="bg-purple-950 text-white border-t border-purple-900 pt-12 pb-8 mt-auto shadow-2xl">
+      <footer style={{ backgroundColor: "#2e1065" }} className="text-white border-t border-purple-900 pt-12 pb-8 mt-auto shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <img src="/pg4.png" alt="Logo" className="h-9 w-auto object-contain bg-white p-1 rounded-lg" />
               <h3 className="text-white font-black text-lg tracking-wide">Designing Prices</h3>
             </div>
-            <p className="text-xs leading-relaxed text-purple-200">
+            <p className="text-xs leading-relaxed text-purple-300">
               Your trusted partner for professional architectural layouts, structure drawings, and complete interior cost estimations.
             </p>
           </div>

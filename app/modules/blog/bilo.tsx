@@ -51,12 +51,12 @@ const blogPosts = [
   },
   {
     id: 5,
-    title: "Cost of Construction of 36 Marla House in Pakistan",
+    title: "Cost of Construction of 10 Marla House in Pakistan",
     category: "Cost of Construction",
     date: "June 2026",
     readTime: "7 min read",
     author: "Cost Estimator",
-    image: "/5.jpg",
+    image: "/10mul.jpg",
     snippet: "A deep dive into building large-scale estate homes, covering material estimations, labor rates, and architectural considerations...",
     content: `Building a 36 Marla mega-mansion requires precise logistical execution. From heavy machinery rental to specialized landscaping, every square foot multiplies the cost exponentially.\n\nKey expense drivers include boundary wall construction, extensive electrical automation, multi-car basement parking, and high-end imported marble or tile flooring.`
   },
@@ -67,7 +67,7 @@ const blogPosts = [
     date: "May 2026",
     readTime: "3 min read",
     author: "Styling Expert",
-    image: "/6.jpg",
+    image: "/per.jpg",
     snippet: "Elevate your living room aesthetics with layered sheer curtains, motorized blinds, and elegant ceiling-to-floor drapery panels...",
     content: `Curtains frame your windows and dictate how natural light enters your living areas. \n\n1. Double-Layered Sheers & Blackouts: Practical for privacy and blocking intense sunlight.\n2. Ceiling-Mounted Tracks: Creates an optical illusion of higher ceilings.\n3. Minimalist Grommet Drapers: Best suited for contemporary drawing rooms.`
   },
@@ -99,10 +99,10 @@ export default function GharPlansBlogsNew() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-slate-100 selection:bg-amber-500 selection:text-slate-950 font-sans">
+    <div className="min-h-screen flex flex-col bg-[#070B14] text-slate-100 selection:bg-amber-500 selection:text-slate-950 font-sans overflow-x-hidden">
       
       {/* GharPlans Official Navigation Bar */}
-      <Navbar />
+    
 
       <div className="flex-1 py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         
@@ -310,30 +310,17 @@ export default function GharPlansBlogsNew() {
   );
 }
 
-// GharPlans Official Navbar Component
+// GharPlans Official Navbar Component (Icon bhi hata diya gaya hai, ab sirf text hai)
 function Navbar() {
   return (
-    <nav className="bg-[#10172A]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800 px-4 sm:px-8 py-3.5 shadow-lg">
+    <nav className="bg-[#10172A] sticky top-0 z-50 border-b border-slate-800 px-4 sm:px-8 py-3.5 shadow-lg">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
         {/* Logo Section */}
-        <div className="flex items-center gap-2.5">
-          <span className="text-2xl">🏗️</span>
+        <div className="flex items-center">
           <span className="text-xl font-extrabold tracking-tight text-white">
             Ghar<span className="text-amber-400">Plans</span>
           </span>
-        </div>
-
-        {/* Navigation Links / Icons */}
-        <div className="flex items-center gap-4 text-slate-300 text-sm">
-          <button className="hidden sm:block hover:text-amber-400 transition font-medium">Home</button>
-          <button className="hidden sm:block hover:text-amber-400 transition font-medium">Plans</button>
-          <button className="hidden sm:block hover:text-amber-400 transition font-medium text-amber-400">Blogs</button>
-          <div className="flex items-center gap-3 pl-2 border-l border-slate-700">
-            <span className="cursor-pointer hover:text-amber-400 transition" title="Notifications">🔔</span>
-            <span className="cursor-pointer hover:text-amber-400 transition" title="Wishlist">❤️</span>
-            <span className="cursor-pointer hover:text-amber-400 transition" title="User Profile">👤</span>
-          </div>
         </div>
 
       </div>

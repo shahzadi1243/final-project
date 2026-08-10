@@ -107,12 +107,12 @@ export default function BacksideSittingSection() {
   const [activeCard, setActiveCard] = useState<BacksideSittingPlan | null>(null);
 
   return (
-    <section className="py-12 bg-gradient-to-r from-purple-950 via-purple-900 to-indigo-950 text-gray-100 font-sans">
+    <section className="py-12 bg-[#11051c] text-gray-100 font-sans">
       <div className="max-w-7xl mx-auto px-4 space-y-12">
         
         {/* SECTION HEADER */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <span className="bg-purple-900/80 text-purple-200 border border-purple-700/60 text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xs">
+          <span className="bg-[#1c082e] text-purple-300 border border-purple-800/80 text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xs">
             🌳 Exclusive Concept
           </span>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -132,7 +132,7 @@ export default function BacksideSittingSection() {
             <span className="text-xs font-semibold text-purple-300">High Definition Preview</span>
           </div>
 
-          <div className="relative w-full h-[280px] sm:h-[450px] rounded-3xl overflow-hidden shadow-2xl border-2 border-purple-700/50 bg-slate-950">
+          <div className="relative w-full h-[280px] sm:h-[450px] rounded-3xl overflow-hidden shadow-2xl border-2 border-purple-800/70 bg-[#180726]">
             <video 
               autoPlay 
               loop 
@@ -145,8 +145,8 @@ export default function BacksideSittingSection() {
             </video>
 
             {/* Video Overlay Info */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-8">
-              <span className="bg-purple-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-md w-max mb-2 uppercase">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#11051c]/90 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-8">
+              <span className="bg-purple-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-md w-max mb-2 uppercase shadow">
                 Featured Walkthrough
               </span>
               <h4 className="text-white text-base sm:text-xl font-bold">
@@ -173,43 +173,43 @@ export default function BacksideSittingSection() {
               <div 
                 key={plan.id}
                 onClick={() => setActiveCard(plan)}
-                className="bg-purple-950/90 rounded-2xl overflow-hidden shadow-lg hover:shadow-purple-700/50 border border-purple-700/40 flex flex-col transition-all duration-300 group cursor-pointer hover:border-purple-400"
+                className="bg-[#180726] rounded-2xl overflow-hidden shadow-xl hover:shadow-purple-900/50 border border-purple-800/70 flex flex-col transition-all duration-300 group cursor-pointer hover:border-purple-500 hover:-translate-y-1"
               >
                 {/* Card Image */}
-                <div className="relative h-48 overflow-hidden bg-slate-900">
+                <div className="relative h-48 overflow-hidden bg-[#11051c]">
                   <img 
                     src={plan.image} 
                     alt={plan.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-85 group-hover:opacity-100" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#180726]/80 via-transparent to-transparent"></div>
                   <span className="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-lg shadow">
                     #{index + 1} • {plan.size}
                   </span>
-                  <span className="absolute bottom-3 left-3 text-white text-xs font-semibold bg-black/40 backdrop-blur px-2.5 py-1 rounded-md">
+                  <span className="absolute bottom-3 left-3 text-purple-200 text-xs font-semibold bg-[#11051c]/70 backdrop-blur px-2.5 py-1 rounded-md border border-purple-800/60">
                     🌳 Backside Open Sitting
                   </span>
                 </div>
 
                 {/* Card Content */}
                 <div className="p-5 flex flex-col flex-1 space-y-3">
-                  <h4 className="text-sm sm:text-base font-bold text-purple-100 group-hover:text-purple-300 transition leading-snug">
+                  <h4 className="text-sm sm:text-base font-bold text-gray-100 group-hover:text-purple-300 transition leading-snug">
                     {plan.title}
                   </h4>
-                  <p className="text-xs text-purple-300/70 line-clamp-2">
+                  <p className="text-xs text-purple-300/80 line-clamp-2">
                     {plan.description}
                   </p>
 
                   {/* Features */}
-                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-purple-800/60 flex-1">
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-purple-900/60 flex-1">
                     {plan.features.map((feat, idx) => (
-                      <span key={idx} className="bg-purple-900/60 text-purple-200 text-[10px] font-bold px-2 py-0.5 rounded-md border border-purple-700/50">
+                      <span key={idx} className="bg-[#11051c] text-purple-200 text-[10px] font-bold px-2 py-0.5 rounded-md border border-purple-800/80">
                         ✓ {feat}
                       </span>
                     ))}
                   </div>
 
-                  <button className="w-full mt-2 py-2.5 bg-purple-900 hover:bg-purple-600 text-white text-xs font-bold rounded-xl transition shadow cursor-pointer">
+                  <button className="w-full mt-2 py-2.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl transition shadow cursor-pointer border border-purple-500/30">
                     View Sitting Layout Details
                   </button>
                 </div>
@@ -222,16 +222,16 @@ export default function BacksideSittingSection() {
 
       {/* POPUP MODAL FOR CARD CLICK */}
       {activeCard && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-purple-950/80 backdrop-blur-md p-4">
-          <div className="bg-purple-950 border border-purple-400/50 rounded-3xl max-w-xl w-full p-6 relative shadow-2xl space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#11051c]/85 backdrop-blur-md p-4 animate-fadeIn">
+          <div className="bg-[#180726] border border-purple-500/50 rounded-3xl max-w-xl w-full p-6 relative shadow-2xl space-y-4">
             <button 
               onClick={() => setActiveCard(null)}
-              className="absolute top-4 right-4 bg-purple-900/80 hover:bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition cursor-pointer"
+              className="absolute top-4 right-4 bg-[#11051c] hover:bg-purple-600 text-purple-200 hover:text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition cursor-pointer border border-purple-800"
             >
               ✕
             </button>
 
-            <span className="bg-purple-900/80 text-purple-200 border border-purple-700/60 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">
+            <span className="bg-purple-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">
               {activeCard.size} Backside Sitting Concept
             </span>
 
@@ -239,7 +239,7 @@ export default function BacksideSittingSection() {
               {activeCard.title}
             </h3>
 
-            <div className="h-48 rounded-xl overflow-hidden bg-slate-900 border border-purple-700/50">
+            <div className="h-48 rounded-xl overflow-hidden bg-[#11051c] border border-purple-800/80">
               <img src={activeCard.image} alt={activeCard.title} className="w-full h-full object-cover" />
             </div>
 
@@ -252,13 +252,13 @@ export default function BacksideSittingSection() {
                 href={`https://wa.me/923000000000?text=I want details about the backside sitting plan: ${encodeURIComponent(activeCard.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 rounded-xl font-bold text-xs text-center transition flex items-center justify-center gap-2 shadow"
+                className="flex-1 bg-green-600 hover:bg-green-500 text-white py-3 rounded-xl font-bold text-xs text-center transition flex items-center justify-center gap-2 shadow"
               >
                 <span>💬</span> Get Full Details on WhatsApp
               </a>
               <button 
                 onClick={() => setActiveCard(null)}
-                className="px-5 py-3 bg-purple-900 hover:bg-purple-800 text-purple-200 rounded-xl font-bold text-xs transition cursor-pointer"
+                className="px-5 py-3 bg-[#11051c] hover:bg-[#200a35] text-purple-200 rounded-xl font-bold text-xs transition cursor-pointer border border-purple-800"
               >
                 Close
               </button>
@@ -266,6 +266,17 @@ export default function BacksideSittingSection() {
           </div>
         </div>
       )}
+
+      {/* Global CSS for Smooth FadeIn */}
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.97); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.25s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 }

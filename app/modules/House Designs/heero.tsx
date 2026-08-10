@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 // ==========================================
 // TYPES DEFINITION
@@ -34,7 +35,7 @@ const housePlansData: HousePlan[] = [
     category: "Marla",
     description: "Ideal for small plots, optimized space utilization with 1 bedroom, kitchen, and bathroom.",
     price: "PKR 15,000",
-    image: "/cn.jpg",
+    image: "/1.jpg",
     features: ["1 Bed", "1 Bath", "Open Kitchen", "Compact Living"],
     beds: "1",
     baths: "1",
@@ -49,7 +50,7 @@ const housePlansData: HousePlan[] = [
     category: "Marla",
     description: "Perfect for small nuclear families, featuring double storey layout with modern elevation.",
     price: "PKR 25,000",
-    image: "/3marla.jpg",
+    image: "/2.jpg",
     features: ["2 Beds", "2 Baths", "Drawing Room", "Kitchen"],
     beds: "2",
     baths: "2",
@@ -64,7 +65,7 @@ const housePlansData: HousePlan[] = [
     category: "Marla",
     description: "Most popular size in Pakistan. Includes 3 bedrooms, spacious lounge, and car porch.",
     price: "PKR 35,000",
-    image: "/5m.jpg",
+    image: "/3.jpg",
     features: ["3 Beds", "3 Baths", "Car Porch", "Terrace"],
     beds: "3",
     baths: "3",
@@ -79,7 +80,7 @@ const housePlansData: HousePlan[] = [
     category: "Marla",
     description: "Slightly wider plot layout with airy rooms, lawn space, and stylish interior balconies.",
     price: "PKR 45,000",
-    image: "/7m.jpg",
+    image: "/1.jpg",
     features: ["4 Beds", "4 Baths", "Lawn Area", "TV Lounge"],
     beds: "4",
     baths: "4",
@@ -94,7 +95,7 @@ const housePlansData: HousePlan[] = [
     category: "Marla",
     description: "Luxurious double storey plan with open-to-sky cut, modern kitchen, and servant quarter.",
     price: "PKR 60,000",
-    image: "/10.jpg",
+    image: "/2.jpg",
     features: ["5 Beds", "6 Baths", "2 Kitchens", "Servant Room"],
     beds: "5",
     baths: "6",
@@ -109,7 +110,7 @@ const housePlansData: HousePlan[] = [
     category: "Kanal",
     description: "Grand mansion style plan featuring swimming pool space, massive landscaped lawn, and 6 bedrooms.",
     price: "PKR 100,000",
-    image: "/PN.jpg",
+    image: "/3.jpg",
     features: ["6 Beds", "7 Baths", "Private Pool", "Double Height Lobby"],
     beds: "6",
     baths: "7",
@@ -124,7 +125,7 @@ const housePlansData: HousePlan[] = [
     category: "Kanal",
     description: "Palatial estate design with grand driveway, multiple lounges, massive lawns, and luxury suites.",
     price: "PKR 180,000",
-    image: "/one.jpg",
+    image: "/1.jpg",
     features: ["8+ Beds", "9 Baths", "Multiple Lawns", "Multiple Garages"],
     beds: "8+",
     baths: "9",
@@ -139,7 +140,7 @@ const housePlansData: HousePlan[] = [
     category: "Kanal",
     description: "Resort-style farmhouse design with sprawling lawns, sports court area, and ultra-luxury interiors.",
     price: "PKR 250,000",
-    image: "/4km.jpg",
+    image: "/2.jpg",
     features: ["10+ Beds", "12 Baths", "Farmhouse Style", "Extensive Grounds"],
     beds: "10+",
     baths: "12",
@@ -154,7 +155,7 @@ const housePlansData: HousePlan[] = [
     category: "Kanal",
     description: "The ultimate pinnacle of luxury living. Custom architectural masterpiece with complete landscaping.",
     price: "Contact for Quote",
-    image: "/10KANAL.Jpg",
+    image: "/3.jpg",
     features: ["Customized", "Imperial Style", "Helipad Option", "Private Security Box"],
     beds: "Custom",
     baths: "Custom",
@@ -172,21 +173,24 @@ function SafeImage({ src, alt, className }: { src: string; alt: string; classNam
 
   if (hasError || !src) {
     return (
-      <div className={`${className} bg-purple-900 flex flex-col items-center justify-center text-white p-4 text-center`}>
+      <div className={`${className} bg-purple-950 flex flex-col items-center justify-center text-white p-4 text-center`}>
         <span className="text-3xl mb-1">📐</span>
-        <span className="text-[10px] font-extrabold uppercase tracking-widest text-purple-200">GharPlans</span>
+        <span className="text-[10px] font-extrabold uppercase tracking-widest text-purple-300">GharPlans</span>
       </div>
     );
   }
 
   return (
-    <img 
-      src={src} 
-      alt={alt} 
-      className={className} 
-      loading="lazy"
-      onError={() => setHasError(true)} 
-    />
+    <div className={`relative w-full h-full ${className}`}>
+      <Image 
+        src={src} 
+        alt={alt} 
+        fill
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        onError={() => setHasError(true)} 
+      />
+    </div>
   );
 }
 
@@ -207,14 +211,14 @@ export default function HousePlansPortal() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-purple-950 via-purple-900 to-indigo-950 font-sans text-gray-100 relative">
+    <div className="min-h-screen flex flex-col bg-[#11051c] font-sans text-gray-100 relative">
 
       {/* MAIN CONTAINER */}
       <div className="max-w-6xl mx-auto px-4 py-10 w-full space-y-8 flex-1">
         
         {/* HERO TITLE SECTION */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <span className="bg-purple-900/80 text-purple-200 border border-purple-700/60 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+          <span className="bg-[#1c082e] text-purple-300 border border-purple-800/80 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-md">
             Professional Architectural Drawings
           </span>
           <h1 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight tracking-wide">
@@ -226,7 +230,7 @@ export default function HousePlansPortal() {
         </div>
 
         {/* SEARCH & FILTER CONTROLS */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-purple-950/80 backdrop-blur-md p-4 rounded-2xl border border-purple-700/50 shadow-xl">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#180726] backdrop-blur-md p-4 rounded-2xl border border-purple-800/70 shadow-xl">
           <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0">
             {(["All", "Marla", "Kanal"] as const).map((tab) => (
               <button
@@ -234,8 +238,8 @@ export default function HousePlansPortal() {
                 onClick={() => setSelectedTab(tab)}
                 className={`px-5 py-2.5 rounded-full text-xs font-bold transition cursor-pointer whitespace-nowrap shadow-sm ${
                   selectedTab === tab 
-                    ? "bg-purple-600 text-white shadow-lg shadow-purple-900/50" 
-                    : "bg-purple-900/40 text-purple-200 hover:bg-purple-900/70 border border-purple-700/40"
+                    ? "bg-purple-600 text-white shadow-lg shadow-purple-900/50 font-black" 
+                    : "bg-[#11051c] text-purple-300 hover:bg-[#200a35] border border-purple-800/80 hover:text-white"
                 }`}
               >
                 {tab === "All" ? "All Sizes (1 Marla - 10 Kanal)" : tab + " Categories"}
@@ -244,7 +248,7 @@ export default function HousePlansPortal() {
           </div>
 
           <div className="w-full sm:w-72 relative">
-            <span className="absolute inset-y-0 left-3.5 flex items-center text-purple-300 text-sm">
+            <span className="absolute inset-y-0 left-3.5 flex items-center text-purple-400 text-sm">
               🔍
             </span>
             <input 
@@ -252,7 +256,7 @@ export default function HousePlansPortal() {
               placeholder="Search e.g. 5 Marla, 1 Kanal..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-purple-950/90 border border-purple-700/60 rounded-full text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition text-gray-200 placeholder-purple-300/60 shadow-inner"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#11051c] border border-purple-800/80 rounded-full text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 transition text-gray-200 placeholder-purple-400/60 shadow-inner"
             />
           </div>
         </div>
@@ -263,16 +267,18 @@ export default function HousePlansPortal() {
             <div 
               key={plan.id} 
               onClick={() => setSelectedHouse(plan)}
-              className="bg-purple-950/90 rounded-2xl overflow-hidden shadow-xl hover:shadow-purple-700/40 border border-purple-700/40 flex flex-col transition-all duration-300 group cursor-pointer hover:border-purple-400"
+              className="bg-[#180726] rounded-2xl overflow-hidden shadow-xl border border-purple-800/70 flex flex-col transition-all duration-500 group cursor-pointer hover:border-purple-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(147,51,234,0.2)]"
             >
               
               {/* Image Container */}
-              <div className="relative h-52 overflow-hidden bg-purple-900/60">
-                <SafeImage src={plan.image} alt={plan.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100" />
-                <span className="absolute top-3 left-3 bg-purple-600 text-white text-[11px] font-extrabold px-3 py-1 rounded-lg shadow-md">
+              <div className="relative h-52 overflow-hidden bg-[#11051c]">
+                <div className="w-full h-full group-hover:scale-105 transition duration-500">
+                  <SafeImage src={plan.image} alt={plan.title} className="opacity-85 group-hover:opacity-100" />
+                </div>
+                <span className="absolute top-3 left-3 bg-purple-600 text-white text-[11px] font-black px-3 py-1 rounded-lg shadow-md z-10">
                   {plan.size}
                 </span>
-                <span className="absolute top-3 right-3 bg-purple-950/90 backdrop-blur text-purple-200 text-[11px] font-bold px-3 py-1 rounded-lg border border-purple-700/50 shadow-md">
+                <span className="absolute top-3 right-3 bg-[#180726]/90 backdrop-blur text-purple-200 text-[11px] font-bold px-3 py-1 rounded-lg border border-purple-800 shadow-md z-10">
                   {plan.price}
                 </span>
               </div>
@@ -280,18 +286,18 @@ export default function HousePlansPortal() {
               {/* Content Details */}
               <div className="p-5 flex flex-col flex-1 space-y-4">
                 <div className="space-y-1.5 flex-1">
-                  <h3 className="text-base font-bold text-purple-100 group-hover:text-purple-300 transition leading-snug">
+                  <h3 className="text-base font-bold text-gray-100 group-hover:text-purple-300 transition leading-snug">
                     {plan.title}
                   </h3>
-                  <p className="text-xs text-purple-300/70 line-clamp-2">
+                  <p className="text-xs text-purple-300/80 line-clamp-2">
                     {plan.description}
                   </p>
                 </div>
 
                 {/* Features Badges */}
-                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-purple-800/60">
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-purple-900/60">
                   {plan.features.map((feat, idx) => (
-                    <span key={idx} className="bg-purple-900/60 text-purple-200 text-[10px] font-bold px-2.5 py-1 rounded-md border border-purple-700/40">
+                    <span key={idx} className="bg-[#11051c] text-purple-200 text-[10px] font-bold px-2.5 py-1 rounded-md border border-purple-800/80 group-hover:border-purple-600 transition">
                       ✓ {feat}
                     </span>
                   ))}
@@ -303,7 +309,7 @@ export default function HousePlansPortal() {
                     e.stopPropagation();
                     setSelectedHouse(plan);
                   }}
-                  className="w-full mt-2 py-2.5 bg-purple-900 hover:bg-purple-600 text-white text-xs font-bold rounded-xl transition shadow cursor-pointer border border-purple-700/50"
+                  className="w-full mt-2 py-2.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-black rounded-xl transition shadow cursor-pointer border border-purple-500/30"
                 >
                   View Complete Details & Map
                 </button>
@@ -317,20 +323,20 @@ export default function HousePlansPortal() {
 
       {/* POPUP MODAL FOR HOUSE DETAILS & MAP VIEW */}
       {selectedHouse && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-purple-950/80 backdrop-blur-md p-4">
-          <div className="bg-purple-950 border border-purple-400/50 rounded-3xl max-w-2xl w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto space-y-6 animate-in fade-in zoom-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#11051c]/85 backdrop-blur-md p-4 animate-fadeIn">
+          <div className="bg-[#180726] border border-purple-500/50 rounded-3xl max-w-2xl w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto space-y-6">
             
             {/* Close Button */}
             <button 
               onClick={() => setSelectedHouse(null)}
-              className="absolute top-4 right-4 bg-purple-900/80 hover:bg-purple-600 text-white w-9 h-9 rounded-full flex items-center justify-center transition font-bold text-sm cursor-pointer shadow-md"
+              className="absolute top-4 right-4 bg-[#11051c] hover:bg-purple-600 hover:text-white text-purple-200 w-9 h-9 rounded-full flex items-center justify-center transition font-bold text-sm cursor-pointer shadow-md border border-purple-800"
             >
               ✕
             </button>
 
             {/* Modal Title */}
             <div className="space-y-1 pr-10">
-              <span className="bg-purple-900 text-purple-200 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-purple-700/50">
+              <span className="bg-purple-600 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase">
                 {selectedHouse.size} Category
               </span>
               <h2 className="text-lg sm:text-xl font-extrabold text-white">
@@ -339,38 +345,38 @@ export default function HousePlansPortal() {
             </div>
 
             {/* Big Map / Image Container */}
-            <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden bg-purple-900/40 border border-purple-700/50 shadow-inner">
+            <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden bg-[#11051c] border border-purple-800/80 shadow-inner">
               <SafeImage 
                 src={selectedHouse.image} 
                 alt={selectedHouse.title} 
-                className="w-full h-full object-contain" 
+                className="object-contain" 
               />
             </div>
 
             {/* Specifications Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-purple-900/40 p-4 rounded-2xl border border-purple-800/60">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-[#11051c]/70 p-4 rounded-2xl border border-purple-800/60">
               <div>
-                <p className="text-[10px] text-purple-300/70 font-semibold uppercase">Bedrooms</p>
+                <p className="text-[10px] text-purple-400 font-semibold uppercase">Bedrooms</p>
                 <p className="text-xs sm:text-sm font-bold text-purple-100">🛏 {selectedHouse.beds} Bedrooms</p>
               </div>
               <div>
-                <p className="text-[10px] text-purple-300/70 font-semibold uppercase">Bathrooms</p>
+                <p className="text-[10px] text-purple-400 font-semibold uppercase">Bathrooms</p>
                 <p className="text-xs sm:text-sm font-bold text-purple-100">🛁 {selectedHouse.baths} Bathrooms</p>
               </div>
               <div>
-                <p className="text-[10px] text-purple-300/70 font-semibold uppercase">Floors</p>
+                <p className="text-[10px] text-purple-400 font-semibold uppercase">Floors</p>
                 <p className="text-xs sm:text-sm font-bold text-purple-100">🏠 {selectedHouse.floors} Storey</p>
               </div>
               <div>
-                <p className="text-[10px] text-purple-300/70 font-semibold uppercase">Total Area</p>
+                <p className="text-[10px] text-purple-400 font-semibold uppercase">Total Area</p>
                 <p className="text-xs sm:text-sm font-bold text-purple-300">{selectedHouse.sqft}</p>
               </div>
               <div>
-                <p className="text-[10px] text-purple-300/70 font-semibold uppercase">Dimensions</p>
+                <p className="text-[10px] text-purple-400 font-semibold uppercase">Dimensions</p>
                 <p className="text-xs sm:text-sm font-bold text-purple-100">{selectedHouse.dimension}</p>
               </div>
               <div>
-                <p className="text-[10px] text-purple-300/70 font-semibold uppercase">Estimated Price</p>
+                <p className="text-[10px] text-purple-400 font-semibold uppercase">Estimated Price</p>
                 <p className="text-xs sm:text-sm font-bold text-emerald-400">{selectedHouse.price}</p>
               </div>
             </div>
@@ -386,13 +392,13 @@ export default function HousePlansPortal() {
                 href={`https://wa.me/923000000000?text=I am interested in getting the map and details for: ${encodeURIComponent(selectedHouse.title)}`} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold text-xs sm:text-sm text-center transition shadow-lg flex items-center justify-center gap-2"
+                className="flex-1 bg-green-600 hover:bg-green-500 text-white py-3 rounded-xl font-bold text-xs sm:text-sm text-center transition shadow-lg flex items-center justify-center gap-2"
               >
                 <span>💬</span> Contact on WhatsApp for Full Map
               </a>
               <button 
                 onClick={() => setSelectedHouse(null)}
-                className="px-6 py-3 bg-purple-900 hover:bg-purple-800 text-purple-200 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer border border-purple-700/50"
+                className="px-6 py-3 bg-[#11051c] hover:bg-[#200a35] text-purple-200 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer border border-purple-800"
               >
                 Close
               </button>
@@ -402,42 +408,16 @@ export default function HousePlansPortal() {
         </div>
       )}
 
-      {/* PROFESSIONAL FOOTER */}
-      <footer className="bg-gradient-to-r from-purple-950 via-indigo-950 to-purple-950 text-gray-200 py-4 px-4 mt-auto border-t border-purple-700/30 shadow-2xl">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-          
-          <div>
-            <h3 className="text-sm font-bold text-purple-300">GharPlans Pakistan</h3>
-            <p className="text-xs text-purple-200/80">📞 +92 3--------- | ✉️ shahzadirai55@gmail.com</p>
-            <p className="text-[10px] text-purple-300/60">© 2026 GharPlans Pakistan. All rights reserved.</p>
-          </div>
-
-          <div className="flex flex-col items-center md:items-end gap-1.5">
-            <span className="text-xs font-semibold text-purple-300">Connect With Us:</span>
-            <div className="flex items-center gap-2">
-              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/60 hover:bg-purple-600 border border-purple-700/50 rounded-full flex items-center justify-center transition text-xs shadow-md" title="WhatsApp">🟢</a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/60 hover:bg-purple-600 border border-purple-700/50 rounded-full flex items-center justify-center transition text-xs shadow-md" title="Facebook">📘</a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/60 hover:bg-purple-600 border border-purple-700/50 rounded-full flex items-center justify-center transition text-xs shadow-md" title="Instagram">📸</a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/60 hover:bg-purple-600 border border-purple-700/50 rounded-full flex items-center justify-center transition text-xs shadow-md" title="YouTube">▶️</a>
-              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/60 hover:bg-purple-600 border border-purple-700/50 rounded-full flex items-center justify-center transition text-xs shadow-md" title="TikTok">🎵</a>
-              <a href="https://imo.im" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/60 hover:bg-purple-600 border border-purple-700/50 rounded-full flex items-center justify-center transition text-xs shadow-md" title="IMO">💬</a>
-            </div>
-          </div>
-
-        </div>
-      </footer>
-
-      {/* Floating WhatsApp Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <a 
-          href="https://whatsapp.com" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 text-3xl"
-        >
-          💬
-        </a>
-      </div>
+      {/* Global CSS for Smooth FadeIn */}
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.97); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.25s ease-out forwards;
+        }
+      `}</style>
 
     </div>
   );
