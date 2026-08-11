@@ -299,7 +299,7 @@ export default function Navbar() {
                     onClick={() => setIsUserOpen(false)}
                   >
                     <LogOut size={16} />
-                    Log Out
+                    Login
                   </button>
                 </div>
               )}

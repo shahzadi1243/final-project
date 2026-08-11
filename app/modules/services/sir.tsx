@@ -10,8 +10,8 @@ interface SubService {
   subtitle: string;
   description: string;
   image: string;
-  videoUrl?: string;
   cities: string[];
+  additionalCards?: { id: string; title: string; desc: string; icon: string }[];
 }
 
 interface ServiceCategory {
@@ -37,8 +37,14 @@ const serviceCategories: ServiceCategory[] = [
         subtitle: "Termite Treatment Service",
         description: "Comprehensive soil and foundation termite proofing before building.",
         image: "/opp.jpg",
-        videoUrl: "sbsb.mp4",
         cities: ["Lahore", "Sialkot", "Islamabad"],
+        additionalCards: [
+          { id: "1", title: "Soil Poisoning", desc: "Applying safe chemical barriers to foundation earth.", icon: "🦠" },
+          { id: "2", title: "Anti-Termite Piping", desc: "Installing perforated pipes for future re-injection.", icon: "🧪" },
+          { id: "3", title: "Damp Proof Course", desc: "Protecting brick masonry levels from pests.", icon: "🧱" },
+          { id: "4", title: "Column Base Spray", desc: "Targeted spraying around structural pillars.", icon: "🏛️" },
+          { id: "5", title: "Final Clearance", desc: "Post-application inspection before casting concrete.", icon: "✅" },
+        ],
       },
       {
         id: "post-construction-termite",
@@ -46,8 +52,14 @@ const serviceCategories: ServiceCategory[] = [
         subtitle: "Termite Treatment Service",
         description: "Effective liquid barrier treatment for existing homes and buildings.",
         image: "/pos.jpg",
-        videoUrl: "src/videos/apki-video.mp4",
         cities: ["Lahore and Sialkot"],
+        additionalCards: [
+          { id: "1", title: "Drill & Injection", desc: "Injecting termiticide along skirting boards.", icon: "💉" },
+          { id: "2", title: "Wooden Frame Care", desc: "Protective coating for wooden structures.", icon: "🚪" },
+          { id: "3", title: "Lawn & Garden", desc: "Checking and treating surrounding outdoor soil.", icon: "🌳" },
+          { id: "4", title: "Infestation Map", desc: "Locating nests and tunnels inside rooms.", icon: "🗺️" },
+          { id: "5", title: "Warranty Seal", desc: "Final verification and maintenance guarantee.", icon: "📜" },
+        ],
       },
     ],
   },
@@ -64,8 +76,14 @@ const serviceCategories: ServiceCategory[] = [
         subtitle: "Waterproofing Service",
         description: "Complete roof membrane and chemical coating against leakages.",
         image: "/rofff.jpg",
-        videoUrl: "src/videos/apki-video.mp4",
         cities: ["Lahore", "Karachi", "Rawalpindi"],
+        additionalCards: [
+          { id: "1", title: "Deep Cleaning", desc: "Removing debris and algae from roof surfaces.", icon: "🧹" },
+          { id: "2", title: "Crack Sealing", desc: "Filling structural cracks with epoxy mortars.", icon: "✨" },
+          { id: "3", title: "Base Primer", desc: "Applying bonding agents for membrane grip.", icon: "🎨" },
+          { id: "4", title: "Membrane Layering", desc: "Laying heat-resistant waterproofing rolls.", icon: "🛡️" },
+          { id: "5", title: "UV Topcoat", desc: "Final reflective coating to withstand sun.", icon: "☀️" },
+        ],
       },
       {
         id: "water-tank-waterproofing",
@@ -74,6 +92,13 @@ const serviceCategories: ServiceCategory[] = [
         description: "Advanced coating solutions to prevent seepage in underground & overhead tanks.",
         image: "/opp.jpg",
         cities: ["Lahore", "Islamabad"],
+        additionalCards: [
+          { id: "1", title: "Tank Scrubbing", desc: "Washing internal walls thoroughly.", icon: "🧼" },
+          { id: "2", title: "Leakage ID", desc: "Locating seepage zones around joints.", icon: "💧" },
+          { id: "3", title: "Crystalline Coat", desc: "Applying deep-penetrating crystal formulas.", icon: "🔮" },
+          { id: "4", title: "Food-Grade Epoxy", desc: "Safe, non-toxic waterproof lining.", icon: "🍽️" },
+          { id: "5", title: "Water Testing", desc: "Filling tank to test integrity before handover.", icon: "⚖️" },
+        ],
       },
       {
         id: "basement-waterproofing",
@@ -82,6 +107,13 @@ const serviceCategories: ServiceCategory[] = [
         description: "Heavy-duty leakage control and damp-proofing for basements.",
         image: "/pos.jpg",
         cities: ["Lahore", "Rawalpindi"],
+        additionalCards: [
+          { id: "1", title: "Pressure Check", desc: "Assessing underground water force.", icon: "📊" },
+          { id: "2", title: "Drainage Setup", desc: "Installing internal channels for water.", icon: "🌊" },
+          { id: "3", title: "Negative Sealing", desc: "Applying mortar to block incoming moisture.", icon: "🛑" },
+          { id: "4", title: "Sump Pump", desc: "Setting up pumps for water evacuation.", icon: "⚙️" },
+          { id: "5", title: "Damp Plaster", desc: "Applying salt-resistant protective layers.", icon: "🧱" },
+        ],
       },
     ],
   },
@@ -98,8 +130,14 @@ const serviceCategories: ServiceCategory[] = [
         subtitle: "Water Tanks Service",
         description: "Deep chemical washing and anti-bacterial treatment.",
         image: "/un.jpg",
-        videoUrl: "src/videos/apki-video.mp4",
         cities: ["Lahore", "Multan"],
+        additionalCards: [
+          { id: "1", title: "Sludge Removal", desc: "Pumping out settled mud and debris.", icon: "🚯" },
+          { id: "2", title: "Jet Wash", desc: "Scouring walls with high-pressure jets.", icon: "🚿" },
+          { id: "3", title: "Anti-Bacterial", desc: "Disinfecting internal surfaces.", icon: "🦠" },
+          { id: "4", title: "UV Sterilize", desc: "Using ultraviolet light treatment.", icon: "🔦" },
+          { id: "5", title: "Quality Audit", desc: "Sampling water to ensure safe standards.", icon: "💯" },
+        ],
       },
     ],
   },
@@ -121,6 +159,31 @@ const serviceCategories: ServiceCategory[] = [
   },
 ];
 
+// Reusable Emotional & Modern Card Wrapper
+const EmotionalCard = ({ children, className = "", isCenter = false }: { children: React.ReactNode, className?: string, isCenter?: boolean }) => (
+  <div className={`
+    bg-[#3D2C66] 
+    rounded-3xl 
+    overflow-hidden 
+    border border-purple-600/50 
+    shadow-xl 
+    transition-all 
+    duration-500 
+    ease-out 
+    cursor-pointer 
+    flex 
+    flex-col 
+    hover:border-purple-300/80
+    hover:-translate-y-2 
+    hover:shadow-[0_20px_50px_-12px_rgba(168,85,247,0.5)]
+    hover:rotate-1
+    ${isCenter ? "ring-2 ring-purple-300/50 shadow-2xl shadow-purple-900/50" : ""}
+    ${className}
+  `}>
+    {children}
+  </div>
+);
+
 export default function CompleteCombinedComponent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [categorySearch, setCategorySearch] = useState("");
@@ -138,7 +201,7 @@ export default function CompleteCombinedComponent() {
   };
 
   // -------------------------------------------------------------
-  // VIEW 3: Detailed Service Page (Image + Video view)
+  // VIEW 3: Detailed Service Page (Image view + 5 Emotional Cards)
   // -------------------------------------------------------------
   if (activeSubService && activeCategory) {
     return (
@@ -166,41 +229,62 @@ export default function CompleteCombinedComponent() {
           </h1>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 py-12 w-full flex-1 space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Image Box */}
-            <div className="relative h-72 sm:h-96 rounded-3xl overflow-hidden shadow-xl border border-purple-600/40 bg-[#3D2C66]">
+        <div className="max-w-6xl mx-auto px-4 py-12 w-full flex-1 space-y-16">
+          {/* Single Image Section with Emotional Effect */}
+          <div className="max-w-2xl mx-auto relative">
+            <div className="absolute -inset-4 bg-purple-900/20 rounded-[2rem] blur-sm transition-all duration-500"></div>
+            <div className="absolute -inset-2 bg-indigo-900/30 rounded-[2.5rem] blur-md rotate-2 opacity-60"></div>
+            
+            <EmotionalCard className="relative aspect-[16/10] z-10 group hover:rotate-0">
               <Image
                 src={activeSubService.image}
                 alt={activeSubService.title}
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3D2C66]/90 via-[#3D2C66]/40 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 right-6 z-10">
+                <h2 className="text-2xl font-bold text-white">{activeSubService.title}</h2>
+                <p className="text-xs text-purple-200 mt-1 opacity-90">{activeSubService.description}</p>
+              </div>
+            </EmotionalCard>
+          </div>
 
-            {/* Video Box */}
-            <div className="relative h-72 sm:h-96 rounded-3xl overflow-hidden shadow-xl bg-black flex items-center justify-center border border-purple-600/40">
-              {activeSubService.videoUrl ? (
-                <video
-                  controls
-                  className="w-full h-full object-cover"
-                  src={activeSubService.videoUrl}
-                />
-              ) : (
-                <div className="text-purple-300 text-sm">No video available for this service.</div>
-              )}
+          {/* 5 Emotional Cards Section */}
+          <div className="space-y-8">
+            <div className="text-center">
+              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">Service Process & Details</h3>
+              <p className="text-xs sm:text-sm text-purple-300 mt-1 max-w-lg mx-auto">We ensure total transparency and quality at every step. Here's what's included:</p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {activeSubService.additionalCards?.map((card, i) => (
+                <EmotionalCard key={card.id} className="p-6 group hover:-translate-y-2 hover:shadow-purple-500/30 hover:scale-[1.02]">
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="w-12 h-12 rounded-2xl bg-purple-900/60 text-purple-300 font-black text-lg flex items-center justify-center border border-purple-700/50 shadow-inner group-hover:bg-purple-700 group-hover:text-white transition-all">
+                        {card.icon}
+                      </span>
+                      <span className="text-6xl font-extrabold text-purple-900/30 group-hover:text-purple-900/50 transition-colors">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <h4 className="text-sm font-bold text-white mb-2 group-hover:text-purple-100">{card.title}</h4>
+                    <p className="text-xs text-purple-300/90 leading-relaxed flex-1">{card.desc}</p>
+                    <div className="mt-4 h-1.5 w-10 bg-purple-700 rounded-full group-hover:w-full group-hover:bg-purple-400 transition-all duration-500"></div>
+                  </div>
+                </EmotionalCard>
+              ))}
             </div>
           </div>
 
-          <div className="flex items-center gap-2 pt-4">
-            <span className="p-2.5 bg-[#3D2C66] text-purple-300 rounded-xl text-sm border border-purple-600/40 shadow-md">📍</span>
-            <div className="px-5 py-2.5 bg-[#3D2C66] text-purple-200 font-semibold text-xs sm:text-sm rounded-xl border border-purple-600/40 shadow-md">
+          <div className="flex items-center gap-2 pt-4 justify-center">
+            <span className="p-3 bg-[#3D2C66] text-purple-300 rounded-xl text-sm border border-purple-600/40 shadow-md">📍</span>
+            <div className="px-6 py-3 bg-[#3D2C66] text-purple-200 font-semibold text-xs sm:text-sm rounded-xl border border-purple-600/40 shadow-md">
               Available in: {activeSubService.cities.join(", ")}
             </div>
           </div>
         </div>
-
-        <Footer />
       </div>
     );
   }
@@ -254,18 +338,19 @@ export default function CompleteCombinedComponent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-6">
             {filteredSubServices.length > 0 ? (
               filteredSubServices.map((sub) => (
-                <div
+                <EmotionalCard
                   key={sub.id}
                   onClick={() => setActiveSubService(sub)}
-                  className="group bg-[#3D2C66] rounded-3xl overflow-hidden border border-purple-600/40 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col hover:border-purple-400/60 hover:-translate-y-1"
+                  className="group"
                 >
                   <div className="relative h-64 w-full overflow-hidden bg-[#281A46]">
                     <Image
                       src={sub.image}
                       alt={sub.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#3D2C66] via-transparent to-transparent opacity-80"></div>
                   </div>
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
@@ -274,12 +359,14 @@ export default function CompleteCombinedComponent() {
                       </h4>
                       <p className="text-xs text-purple-300/80 mt-2 line-clamp-2">{sub.description}</p>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-purple-600/40 flex items-center justify-between text-xs text-purple-300 font-semibold">
+                    <div className="mt-6 pt-4 border-t border-purple-600/40 flex items-center justify-between text-xs text-purple-300 font-semibold">
                       <span className="text-purple-200 truncate max-w-[170px]">📍 {sub.cities.join(", ")}</span>
-                      <span className="text-purple-300 font-bold group-hover:translate-x-1 transition-transform duration-300 whitespace-nowrap">View Details &rarr;</span>
+                      <span className="text-purple-300 font-bold group-hover:translate-x-1.5 transition-transform duration-300 whitespace-nowrap flex items-center gap-1">
+                        View Details &rarr;
+                      </span>
                     </div>
                   </div>
-                </div>
+                </EmotionalCard>
               ))
             ) : (
               <div className="col-span-full text-center text-purple-300 py-12 bg-[#3D2C66] rounded-3xl border border-purple-600/40">
@@ -288,8 +375,6 @@ export default function CompleteCombinedComponent() {
             )}
           </div>
         </div>
-
-        <Footer />
       </div>
     );
   }
@@ -369,7 +454,7 @@ export default function CompleteCombinedComponent() {
                       key={service.id}
                       onClick={() => setCurrentIndex(index)}
                       className={`absolute transition-all duration-500 ease-out cursor-pointer w-72 sm:w-80 h-[380px] rounded-3xl overflow-hidden shadow-2xl border border-purple-500/60 bg-[#3D2C66] flex flex-col justify-end p-6 transform ${transformStyle} ${
-                        isCenter ? "ring-2 ring-purple-300/80 border-purple-300 shadow-2xl" : ""
+                        isCenter ? "ring-2 ring-purple-300/80 border-purple-300 shadow-2xl hover:scale-105" : "hover:opacity-90"
                       }`}
                     >
                       <div className="absolute inset-0 z-0 bg-[#281A46]">
@@ -421,24 +506,6 @@ export default function CompleteCombinedComponent() {
           </div>
         </section>
       </div>
-
-      <Footer />
     </div>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="w-full bg-[#3D2C66] text-purple-300 py-8 px-6 border-t border-purple-600/40 mt-auto shadow-2xl">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-        <div>
-          <h3 className="text-lg font-bold text-white">Gharplans Services</h3>
-          <p className="text-xs text-purple-300/70 mt-1">Providing professional home and construction solutions you can trust.</p>
-        </div>
-        <div className="text-xs text-purple-300/60">
-          &copy; {new Date().getFullYear()} Gharplans. All rights reserved.
-        </div>
-      </div>
-    </footer>
   );
 }
