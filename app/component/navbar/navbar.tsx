@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   Bell,
   User,
   Heart,
   ShoppingCart,
-  ChevronDown,
   LogOut,
   Settings,
   Package,
@@ -32,6 +32,7 @@ interface Particle {
 }
 
 export default function Navbar() {
+  const router = useRouter();
   const [liked, setLiked] = useState(false);
   const [hearts, setHearts] = useState<HeartItem[]>([]);
   const [isUserOpen, setIsUserOpen] = useState(false);
@@ -136,6 +137,10 @@ export default function Navbar() {
     setTimeout(() => {
       setHearts((prev) => prev.filter((h) => !newHearts.some((nh) => nh.id === h.id)));
     }, 1000);
+
+    setTimeout(() => {
+      router.push("/login");
+    }, 400);
   };
 
   return (
@@ -178,7 +183,7 @@ export default function Navbar() {
         }
       `}</style>
 
-      <header className="w-full bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 text-gray-100 border-b border-purple-900/50 shadow-xl sticky top-0 z-50 overflow-hidden backdrop-blur-md">
+      <header className="w-full bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 text-gray-100 border-b border-purple-900/50 shadow-xl sticky top-0 z-50 backdrop-blur-md">
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
           {particles.map((p) => (
             <span
@@ -197,65 +202,60 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-6 relative z-10">
-          <Link href="/" className="flex items-center">
+        <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-4 sm:px-6 relative z-10">
+          {/* Logo & Brand Name */}
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
             <Image
               src="/sdd.png"
               alt="Logo"
-              width={60}
-              height={60}
+              width={45}
+              height={45}
               priority
+              className="object-contain"
             />
+            <span className="text-xl font-bold text-white tracking-wide">GharPlans</span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-2">
+          {/* Navigation Links */}
+          <nav className="hidden xl:flex items-center gap-1 text-sm font-medium">
             <Link
               href="/"
-              className="bg-purple-600 text-white px-5 py-2.5 rounded-full font-medium hover:bg-purple-500 transition shadow-md shadow-purple-900/50"
+              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md shadow-purple-900/50"
             >
               House Designs
             </Link>
-
-            <Link href="/shop" className="px-4 py-2.5 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link href="/shop" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
               Shop
             </Link>
-
-            <Link href="/interior" className="px-4 py-2.5 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
-              Interior
+            <Link href="/interior" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+              Interior Designs
             </Link>
-
-            <Link href="/blog" className="px-4 py-2.5 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link href="/blog" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
               Blog
             </Link>
-
-            <Link href="/pricing" className="px-4 py-2.5 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link href="/pricing" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
               Pricing
             </Link>
-
-            <Link href="/services" className="px-4 py-2.5 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link href="/services" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
               Services
             </Link>
-
-            {/* Cone Page Link Added Here */}
-            <Link
-              href="/cone"
-              className="flex items-center gap-1 px-4 py-2.5 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition"
-            >
+            {/* Cone Page Link */}
+            <Link href="/cone" className="flex items-center gap-1 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
               Cone
             </Link>
-
-            <Link href="/contact" className="px-4 py-2.5 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link href="/contact" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
               Contact Us
             </Link>
           </nav>
 
-          <div className="flex items-center gap-5 text-gray-300">
+          {/* Right Icons Section */}
+          <div className="flex items-center gap-3 sm:gap-4 text-gray-300 shrink-0">
             <button
               onClick={playBellSound}
               className="hover:text-amber-400 transition active:scale-95 cursor-pointer p-2 hover:bg-white/5 rounded-full"
               title="Notification"
             >
-              <Bell size={22} />
+              <Bell size={20} />
             </button>
 
             <div className="relative">
@@ -264,7 +264,7 @@ export default function Navbar() {
                 className="hover:text-blue-400 transition flex items-center cursor-pointer p-2 hover:bg-white/5 rounded-full"
                 title="User Account"
               >
-                <User size={22} />
+                <User size={20} />
               </button>
 
               {isUserOpen && (
@@ -305,14 +305,15 @@ export default function Navbar() {
               )}
             </div>
 
+            {/* Heart Icon */}
             <div className="relative">
               <button
                 onClick={handleHeartClick}
                 className="transition active:scale-125 duration-150 cursor-pointer p-2 hover:bg-white/5 rounded-full"
-                title="Favorite"
+                title="Sign In / Favorite"
               >
                 <Heart
-                  size={22}
+                  size={20}
                   className={
                     liked
                       ? "fill-red-500 text-red-500"
@@ -340,9 +341,9 @@ export default function Navbar() {
               ))}
             </div>
 
-            <button className="hover:text-emerald-400 transition cursor-pointer p-2 hover:bg-white/5 rounded-full">
-              <ShoppingCart size={22} />
-            </button>
+            <Link href="/cart" className="hover:text-emerald-400 transition cursor-pointer p-2 hover:bg-white/5 rounded-full">
+              <ShoppingCart size={20} />
+            </Link>
           </div>
         </div>
       </header>
