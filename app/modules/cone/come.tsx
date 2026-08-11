@@ -172,34 +172,7 @@ export default function App() {
         </div>
       </main>
 
-      {/* Slim Footer with Social Icons */}
-      <footer style={{ backgroundColor: "#1a0b2e" }} className="text-purple-200 py-3 px-6 border-t border-purple-900">
-        <div className="container mx-auto max-w-screen-xl flex flex-col sm:flex-row items-center justify-between text-xs gap-3">
-          <p>© 2026 Gharplans.pk. All rights reserved.</p>
-          
-          <div className="flex items-center gap-3 text-sm">
-            <a href="#facebook" title="Facebook" className="hover:text-amber-400 transition">📘</a>
-            <a href="#tiktok" title="TikTok" className="hover:text-amber-400 transition">🎵</a>
-            <a href="#youtube" title="YouTube" className="hover:text-amber-400 transition">▶️</a>
-            <a href="#imo" title="IMO" className="hover:text-amber-400 transition">💬</a>
-            <a href="#instagram" title="Instagram" className="hover:text-amber-400 transition">📸</a>
-            <a href="#whatsapp" title="WhatsApp" className="hover:text-green-400 transition">🟢</a>
-          </div>
-
-          <p className="text-purple-300 font-medium">Built with precision</p>
-        </div>
-      </footer>
-
-      {/* CSS for FadeIn Animation */}
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out forwards;
-        }
-      `}</style>
+     
     </div>
   );
 }

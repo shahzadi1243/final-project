@@ -304,72 +304,7 @@ export default function GharPlansBlogsNew() {
       </div>
 
       {/* Footer & Floating WhatsApp */}
-      <Footer />
-      <FloatingWhatsApp />
-    </div>
-  );
-}
-
-// GharPlans Official Navbar Component (Icon bhi hata diya gaya hai, ab sirf text hai)
-function Navbar() {
-  return (
-    <nav className="bg-[#10172A] sticky top-0 z-50 border-b border-slate-800 px-4 sm:px-8 py-3.5 shadow-lg">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        
-        {/* Logo Section */}
-        <div className="flex items-center">
-          <span className="text-xl font-extrabold tracking-tight text-white">
-            Ghar<span className="text-amber-400">Plans</span>
-          </span>
-        </div>
-
-      </div>
-    </nav>
-  );
-}
-
-// Professional Footer Component with Social Links
-function Footer() {
-  return (
-    <footer className="bg-gradient-to-r from-gray-950 via-purple-950 to-gray-950 text-gray-200 py-6 px-6 mt-auto border-t border-purple-500/30 shadow-2xl">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-        
-        <div>
-          <h3 className="text-sm font-bold text-amber-300">Gharplans Services</h3>
-          <p className="text-xs text-gray-300 mt-1">📞 +92 3--------- | ✉️ shahzadirai55@gmail.com</p>
-          <p className="text-[10px] text-gray-400 mt-1">&copy; {new Date().getFullYear()} Gharplans. All rights reserved.</p>
-        </div>
-
-        <div className="flex flex-col items-center md:items-end gap-1.5">
-          <span className="text-xs font-semibold text-amber-300">Connect With Us:</span>
-          <div className="flex items-center gap-2">
-            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/40 hover:bg-purple-600/60 border border-purple-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="WhatsApp">🟢</a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/40 hover:bg-purple-600/60 border border-purple-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="Facebook">📘</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/40 hover:bg-purple-600/60 border border-purple-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="Instagram">📸</a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/40 hover:bg-purple-600/60 border border-purple-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="YouTube">▶️</a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/40 hover:bg-purple-600/60 border border-purple-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="TikTok">🎵</a>
-            <a href="https://imo.im" target="_blank" rel="noopener noreferrer" className="w-7 h-7 bg-purple-900/40 hover:bg-purple-600/60 border border-purple-500/30 rounded-full flex items-center justify-center transition text-xs shadow-md" title="IMO">💬</a>
-          </div>
-        </div>
-
-      </div>
-    </footer>
-  );
-}
-
-// Floating WhatsApp Button Component
-function FloatingWhatsApp() {
-  return (
-    <div className="fixed bottom-6 right-6 z-50">
-      <a 
-        href="https://whatsapp.com" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full flex items-center justify-center shadow-xl transition transform hover:scale-110 text-3xl"
-        title="Chat on WhatsApp"
-      >
-        💬
-      </a>
+      
     </div>
   );
 }
