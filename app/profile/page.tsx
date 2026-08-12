@@ -22,15 +22,18 @@ export default function ProfilePage() {
           
           {/* User Avatar (Real Photo) & Name Section */}
           <div className="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-purple-900/40 text-center sm:text-left">
-            {/* Real Profile Picture Area */}
-            <div className="relative w-32 h-32 rounded-full overflow-hidden shadow-2xl shadow-purple-900/50 border-4 border-purple-400/30 ring-4 ring-slate-950/50 transition-all duration-300 hover:border-purple-500/50">
-              <Image
-                src="/shahzadi.png" // Public folder wali image ka path string mein hoga
-                alt="Shahzadi Rai"
-                fill
-                className="object-cover object-center scale-110"
-                priority
-              />
+            
+            {/* Real Profile Picture Area with Continuous Rotation */}
+            <div className="relative w-32 h-32 rounded-full overflow-hidden shadow-2xl shadow-purple-900/50 border-4 border-purple-400/30 ring-4 ring-slate-950/50 transition-all duration-300 hover:border-purple-500/50 group">
+              <div className="w-full h-full animate-[spin_12s_linear_infinite] group-hover:[animation-play-state:paused]">
+                <Image
+                  src="/shahzadi.png"
+                  alt="Shahzadi Rai"
+                  fill
+                  className="object-cover object-center scale-110"
+                  priority
+                />
+              </div>
             </div>
             
             {/* Name & Info Area */}
@@ -89,7 +92,7 @@ export default function ProfilePage() {
             
             <button
               onClick={() => alert("Profile edit feature coming soon!")}
-              className="w-full sm:w-auto inline-files items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-3.5 rounded-xl font-semibold hover:from-purple-500 hover:to-indigo-500 transition shadow-xl shadow-purple-900/50 text-sm ring-2 ring-purple-500/30 flex"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-3.5 rounded-xl font-semibold hover:from-purple-500 hover:to-indigo-500 transition shadow-xl shadow-purple-900/50 text-sm ring-2 ring-purple-500/30 flex cursor-pointer"
             >
               <Edit3 size={18} /> Edit Profile Details
             </button>

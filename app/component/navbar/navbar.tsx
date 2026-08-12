@@ -213,7 +213,7 @@ export default function Navbar() {
               priority
               className="object-contain"
             />
-            <span className="text-xl font-bold text-white tracking-wide">GharPlans</span>
+            <span className="text-xl font-bold text-white tracking-wide">House Designing</span>
           </Link>
 
           {/* Navigation Links */}

@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, MouseEvent } from "react";
 import Image from "next/image";
 
-// Types definition
 interface SubService {
   id: string;
   title: string;
@@ -11,7 +10,7 @@ interface SubService {
   description: string;
   image: string;
   cities: string[];
-  additionalCards?: { id: string; title: string; desc: string; icon: string }[];
+  additionalCards?: { id: string; title: string; desc: string }[];
 }
 
 interface ServiceCategory {
@@ -39,11 +38,11 @@ const serviceCategories: ServiceCategory[] = [
         image: "/opp.jpg",
         cities: ["Lahore", "Sialkot", "Islamabad"],
         additionalCards: [
-          { id: "1", title: "Soil Poisoning", desc: "Applying safe chemical barriers to foundation earth.", icon: "🦠" },
-          { id: "2", title: "Anti-Termite Piping", desc: "Installing perforated pipes for future re-injection.", icon: "🧪" },
-          { id: "3", title: "Damp Proof Course", desc: "Protecting brick masonry levels from pests.", icon: "🧱" },
-          { id: "4", title: "Column Base Spray", desc: "Targeted spraying around structural pillars.", icon: "🏛️" },
-          { id: "5", title: "Final Clearance", desc: "Post-application inspection before casting concrete.", icon: "✅" },
+          { id: "1", title: "Soil Poisoning Phase", desc: "Applying safe chemical barriers to foundation earth." },
+          { id: "2", title: "Anti-Termite Piping", desc: "Installing perforated pipes for future chemical re-injection." },
+          { id: "3", title: "Damp Proof Course Spray", desc: "Protecting brick masonry levels from subterranean pests." },
+          { id: "4", title: "Column Base Shielding", desc: "Targeted spraying around structural pillar trenches." },
+          { id: "5", title: "Final Site Clearance", desc: "Post-application inspection before casting floor concrete." },
         ],
       },
       {
@@ -54,11 +53,11 @@ const serviceCategories: ServiceCategory[] = [
         image: "/pos.jpg",
         cities: ["Lahore and Sialkot"],
         additionalCards: [
-          { id: "1", title: "Drill & Injection", desc: "Injecting termiticide along skirting boards.", icon: "💉" },
-          { id: "2", title: "Wooden Frame Care", desc: "Protective coating for wooden structures.", icon: "🚪" },
-          { id: "3", title: "Lawn & Garden", desc: "Checking and treating surrounding outdoor soil.", icon: "🌳" },
-          { id: "4", title: "Infestation Map", desc: "Locating nests and tunnels inside rooms.", icon: "🗺️" },
-          { id: "5", title: "Warranty Seal", desc: "Final verification and maintenance guarantee.", icon: "📜" },
+          { id: "1", title: "Wall Drilling & Injection", desc: "Drilling small holes along skirting boards to inject termiticide." },
+          { id: "2", title: "Wooden Door Frame Treatment", desc: "Special oil-based protective coating for wooden structures." },
+          { id: "3", title: "Lawn & Garden Check", desc: "Checking and treating surrounding outdoor soil patches." },
+          { id: "4", title: "Infestation Mapping", desc: "Locating termite nests and mud tunnels inside rooms." },
+          { id: "5", title: "Warranty Seal Inspection", desc: "Final verification and issuing maintenance guarantee." },
         ],
       },
     ],
@@ -78,11 +77,11 @@ const serviceCategories: ServiceCategory[] = [
         image: "/rofff.jpg",
         cities: ["Lahore", "Karachi", "Rawalpindi"],
         additionalCards: [
-          { id: "1", title: "Deep Cleaning", desc: "Removing debris and algae from roof surfaces.", icon: "🧹" },
-          { id: "2", title: "Crack Sealing", desc: "Filling structural cracks with epoxy mortars.", icon: "✨" },
-          { id: "3", title: "Base Primer", desc: "Applying bonding agents for membrane grip.", icon: "🎨" },
-          { id: "4", title: "Membrane Layering", desc: "Laying heat-resistant waterproofing rolls.", icon: "🛡️" },
-          { id: "5", title: "UV Topcoat", desc: "Final reflective coating to withstand sun.", icon: "☀️" },
+          { id: "1", title: "Surface Deep Cleaning", desc: "Removing dust, loose debris, and algae from roof surfaces." },
+          { id: "2", title: "Crack Sealing & Patching", desc: "Filling structural cracks with heavy-duty epoxy mortars." },
+          { id: "3", title: "Base Primer Coating", desc: "Applying bonding agents for superior membrane grip." },
+          { id: "4", title: "Membrane Sheet Layering", desc: "Laying heat-resistant multi-layered waterproofing rolls." },
+          { id: "5", title: "UV Protective Topcoat", desc: "Final reflective coating to withstand intense sunlight." },
         ],
       },
       {
@@ -93,11 +92,11 @@ const serviceCategories: ServiceCategory[] = [
         image: "/opp.jpg",
         cities: ["Lahore", "Islamabad"],
         additionalCards: [
-          { id: "1", title: "Tank Scrubbing", desc: "Washing internal walls thoroughly.", icon: "🧼" },
-          { id: "2", title: "Leakage ID", desc: "Locating seepage zones around joints.", icon: "💧" },
-          { id: "3", title: "Crystalline Coat", desc: "Applying deep-penetrating crystal formulas.", icon: "🔮" },
-          { id: "4", title: "Food-Grade Epoxy", desc: "Safe, non-toxic waterproof lining.", icon: "🍽️" },
-          { id: "5", title: "Water Testing", desc: "Filling tank to test integrity before handover.", icon: "⚖️" },
+          { id: "1", title: "Tank Draining & Scrubbing", desc: "Emptying and thoroughly washing internal walls." },
+          { id: "2", title: "Leakage Point Identification", desc: "Locating seepage zones around pipe joints and corners." },
+          { id: "3", title: "Crystalline Coating", desc: "Applying deep-penetrating crystal formulas to block pores." },
+          { id: "4", title: "Food-Grade Epoxy Finish", desc: "Safe, non-toxic waterproof lining for drinking water." },
+          { id: "5", title: "Curing & Water Testing", desc: "Filling tank to test integrity before handing over." },
         ],
       },
       {
@@ -108,11 +107,11 @@ const serviceCategories: ServiceCategory[] = [
         image: "/pos.jpg",
         cities: ["Lahore", "Rawalpindi"],
         additionalCards: [
-          { id: "1", title: "Pressure Check", desc: "Assessing underground water force.", icon: "📊" },
-          { id: "2", title: "Drainage Setup", desc: "Installing internal channels for water.", icon: "🌊" },
-          { id: "3", title: "Negative Sealing", desc: "Applying mortar to block incoming moisture.", icon: "🛑" },
-          { id: "4", title: "Sump Pump", desc: "Setting up pumps for water evacuation.", icon: "⚙️" },
-          { id: "5", title: "Damp Plaster", desc: "Applying salt-resistant protective layers.", icon: "🧱" },
+          { id: "1", title: "Hydrostatic Pressure Check", desc: "Assessing underground water force against basement walls." },
+          { id: "2", title: "Drainage Channel Setup", desc: "Installing internal channels to redirect accumulated water." },
+          { id: "3", title: "Negative-Side Sealing", desc: "Applying specialized mortar to block incoming moisture." },
+          { id: "4", title: "Sump Pump Integration", desc: "Setting up automated pumps for excess water evacuation." },
+          { id: "5", title: "Damp-Proof Plastering", desc: "Applying salt-resistant protective plaster layers." },
         ],
       },
     ],
@@ -132,11 +131,11 @@ const serviceCategories: ServiceCategory[] = [
         image: "/un.jpg",
         cities: ["Lahore", "Multan"],
         additionalCards: [
-          { id: "1", title: "Sludge Removal", desc: "Pumping out settled mud and debris.", icon: "🚯" },
-          { id: "2", title: "Jet Wash", desc: "Scouring walls with high-pressure jets.", icon: "🚿" },
-          { id: "3", title: "Anti-Bacterial", desc: "Disinfecting internal surfaces.", icon: "🦠" },
-          { id: "4", title: "UV Sterilize", desc: "Using ultraviolet light treatment.", icon: "🔦" },
-          { id: "5", title: "Quality Audit", desc: "Sampling water to ensure safe standards.", icon: "💯" },
+          { id: "1", title: "Sludge Removal", desc: "Pumping out settled mud, silt, and debris from the bottom." },
+          { id: "2", title: "High-Pressure Jet Wash", desc: "Scouring walls and ceiling with professional water jets." },
+          { id: "3", title: "Anti-Bacterial Spray", desc: "Disinfecting internal surfaces to kill harmful germs." },
+          { id: "4", title: "UV Sterilization Process", desc: "Using ultraviolet light treatment for absolute purity." },
+          { id: "5", title: "Water Quality Audit", desc: "Sampling water to ensure safe consumption standards." },
         ],
       },
     ],
@@ -159,38 +158,22 @@ const serviceCategories: ServiceCategory[] = [
   },
 ];
 
-// Reusable Emotional & Modern Card Wrapper
-const EmotionalCard = ({ children, className = "", isCenter = false }: { children: React.ReactNode, className?: string, isCenter?: boolean }) => (
-  <div className={`
-    bg-[#3D2C66] 
-    rounded-3xl 
-    overflow-hidden 
-    border border-purple-600/50 
-    shadow-xl 
-    transition-all 
-    duration-500 
-    ease-out 
-    cursor-pointer 
-    flex 
-    flex-col 
-    hover:border-purple-300/80
-    hover:-translate-y-2 
-    hover:shadow-[0_20px_50px_-12px_rgba(168,85,247,0.5)]
-    hover:rotate-1
-    ${isCenter ? "ring-2 ring-purple-300/50 shadow-2xl shadow-purple-900/50" : ""}
-    ${className}
-  `}>
-    {children}
-  </div>
-);
-
 export default function CompleteCombinedComponent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [categorySearch, setCategorySearch] = useState("");
   const [citySearch, setCitySearch] = useState("");
-  
   const [activeCategory, setActiveCategory] = useState<ServiceCategory | null>(null);
-  const [activeSubService, setActiveSubService] = useState<SubService | null>(null);
+
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth - 0.5) * 40;
+    const y = (clientY / innerHeight - 0.5) * 40;
+    setMousePos({ x, y });
+  };
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % serviceCategories.length);
@@ -200,98 +183,6 @@ export default function CompleteCombinedComponent() {
     setCurrentIndex((prev) => (prev - 1 + serviceCategories.length) % serviceCategories.length);
   };
 
-  // -------------------------------------------------------------
-  // VIEW 3: Detailed Service Page (Image view + 5 Emotional Cards)
-  // -------------------------------------------------------------
-  if (activeSubService && activeCategory) {
-    return (
-      <div className="min-h-screen flex flex-col bg-[#302052] font-sans text-purple-100 selection:bg-purple-500 selection:text-white">
-        <nav className="w-full bg-[#3D2C66] shadow-md px-6 py-4 flex items-center justify-between border-b border-purple-600/40">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setActiveSubService(null)}
-              className="px-4 py-2 bg-[#302052] text-purple-200 rounded-xl font-bold text-xs sm:text-sm shadow hover:bg-[#281A46] transition flex items-center gap-2 cursor-pointer border border-purple-500/60 hover:border-purple-300"
-            >
-              ⬅ Back to Sub-Services
-            </button>
-            <span className="text-xs font-semibold text-purple-300 hidden sm:inline">
-              {activeCategory.title} / {activeSubService.title}
-            </span>
-          </div>
-        </nav>
-
-        <div className="bg-[#3D2C66] py-12 px-4 text-center text-white space-y-4 border-b border-purple-600/40">
-          <span className="inline-block px-4 py-1.5 bg-purple-700/60 text-purple-200 text-xs font-semibold rounded-full border border-purple-500/60">
-            {activeSubService.subtitle}
-          </span>
-          <h1 className="text-2xl sm:text-4xl font-extrabold max-w-3xl mx-auto leading-tight text-white">
-            {activeSubService.title}
-          </h1>
-        </div>
-
-        <div className="max-w-6xl mx-auto px-4 py-12 w-full flex-1 space-y-16">
-          {/* Single Image Section with Emotional Effect */}
-          <div className="max-w-2xl mx-auto relative">
-            <div className="absolute -inset-4 bg-purple-900/20 rounded-[2rem] blur-sm transition-all duration-500"></div>
-            <div className="absolute -inset-2 bg-indigo-900/30 rounded-[2.5rem] blur-md rotate-2 opacity-60"></div>
-            
-            <EmotionalCard className="relative aspect-[16/10] z-10 group hover:rotate-0">
-              <Image
-                src={activeSubService.image}
-                alt={activeSubService.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#3D2C66]/90 via-[#3D2C66]/40 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6 z-10">
-                <h2 className="text-2xl font-bold text-white">{activeSubService.title}</h2>
-                <p className="text-xs text-purple-200 mt-1 opacity-90">{activeSubService.description}</p>
-              </div>
-            </EmotionalCard>
-          </div>
-
-          {/* 5 Emotional Cards Section */}
-          <div className="space-y-8">
-            <div className="text-center">
-              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">Service Process & Details</h3>
-              <p className="text-xs sm:text-sm text-purple-300 mt-1 max-w-lg mx-auto">We ensure total transparency and quality at every step. Here's what's included:</p>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-              {activeSubService.additionalCards?.map((card, i) => (
-                <EmotionalCard key={card.id} className="p-6 group hover:-translate-y-2 hover:shadow-purple-500/30 hover:scale-[1.02]">
-                  <div className="flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="w-12 h-12 rounded-2xl bg-purple-900/60 text-purple-300 font-black text-lg flex items-center justify-center border border-purple-700/50 shadow-inner group-hover:bg-purple-700 group-hover:text-white transition-all">
-                        {card.icon}
-                      </span>
-                      <span className="text-6xl font-extrabold text-purple-900/30 group-hover:text-purple-900/50 transition-colors">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-                    <h4 className="text-sm font-bold text-white mb-2 group-hover:text-purple-100">{card.title}</h4>
-                    <p className="text-xs text-purple-300/90 leading-relaxed flex-1">{card.desc}</p>
-                    <div className="mt-4 h-1.5 w-10 bg-purple-700 rounded-full group-hover:w-full group-hover:bg-purple-400 transition-all duration-500"></div>
-                  </div>
-                </EmotionalCard>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 pt-4 justify-center">
-            <span className="p-3 bg-[#3D2C66] text-purple-300 rounded-xl text-sm border border-purple-600/40 shadow-md">📍</span>
-            <div className="px-6 py-3 bg-[#3D2C66] text-purple-200 font-semibold text-xs sm:text-sm rounded-xl border border-purple-600/40 shadow-md">
-              Available in: {activeSubService.cities.join(", ")}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // -------------------------------------------------------------
-  // VIEW 2: Sub-Services List Page (Cards Grid view)
-  // -------------------------------------------------------------
   if (activeCategory) {
     const filteredSubServices = activeCategory.subServices.filter((sub) =>
       sub.cities.some((c) => c.toLowerCase().includes(citySearch.toLowerCase())) ||
@@ -299,118 +190,188 @@ export default function CompleteCombinedComponent() {
     );
 
     return (
-      <div className="min-h-screen flex flex-col bg-[#302052] font-sans text-purple-100 selection:bg-purple-500 selection:text-white">
-        <nav className="w-full bg-[#3D2C66] shadow-md px-6 py-4 flex items-center justify-between border-b border-purple-600/40">
+      <div 
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        className="min-h-screen flex flex-col bg-[#0B0614] font-sans text-purple-100 selection:bg-purple-500 selection:text-white relative overflow-hidden"
+      >
+        <div 
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-700/15 rounded-full blur-[120px] pointer-events-none transition-transform duration-300 ease-out"
+          style={{ transform: `translate(${mousePos.x * 1.5}px, ${mousePos.y * 1.5}px)` }}
+        ></div>
+        <div 
+          className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-indigo-800/15 rounded-full blur-[140px] pointer-events-none transition-transform duration-300 ease-out"
+          style={{ transform: `translate(${-mousePos.x * 1.5}px, ${-mousePos.y * 1.5}px)` }}
+        ></div>
+
+        <nav className="w-full bg-[#130A24]/90 backdrop-blur-md shadow-lg px-6 py-4 flex items-center justify-between border-b border-purple-900/50 z-20">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setActiveCategory(null)}
-              className="px-4 py-2 bg-[#302052] text-purple-200 rounded-xl font-bold text-xs sm:text-sm shadow hover:bg-[#281A46] transition flex items-center gap-2 cursor-pointer border border-purple-500/60 hover:border-purple-300"
+              className="px-4 py-2 bg-[#1A102F] text-purple-200 rounded-xl font-bold text-xs sm:text-sm shadow hover:bg-[#23153C] transition flex items-center gap-2 cursor-pointer border border-purple-800/60"
             >
               ⬅ Back to Categories
             </button>
-            <span className="text-xs font-semibold text-purple-300 hidden sm:inline">
+            <span className="text-xs font-semibold text-purple-400 hidden sm:inline">
               {activeCategory.title}
             </span>
           </div>
         </nav>
 
-        <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1 space-y-8">
+        <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1 space-y-8 z-10">
           <div className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">Services</h2>
-            <div className="w-16 h-1 bg-purple-400 mx-auto rounded-full"></div>
+            <div className="w-16 h-1 bg-purple-500 mx-auto rounded-full shadow-[0_0_15px_rgba(168,85,247,0.9)]"></div>
             <h3 className="text-xl font-bold text-purple-200">{activeCategory.title}</h3>
-            <p className="text-purple-300 text-xs sm:text-sm max-w-xl mx-auto">{activeCategory.description}</p>
+            <p className="text-purple-300/80 text-xs sm:text-sm max-w-xl mx-auto">{activeCategory.description}</p>
 
             <div className="max-w-md mx-auto pt-4">
               <div className="relative flex items-center">
-                <span className="absolute left-4 text-purple-300 text-sm">📍</span>
+                <span className="absolute left-4 text-purple-400 text-sm">📍</span>
                 <input
                   type="text"
                   placeholder="Search services by city..."
                   value={citySearch}
                   onChange={(e) => setCitySearch(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-[#3D2C66] border border-purple-500/60 text-purple-100 placeholder-purple-300/60 rounded-2xl shadow-xl text-sm focus:outline-none focus:border-purple-300 focus:ring-1 focus:ring-purple-300 transition"
+                  className="w-full pl-10 pr-4 py-3 bg-[#160D2A] border border-purple-900/60 text-purple-100 placeholder-purple-400/50 rounded-2xl shadow-xl text-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/40 transition"
                 />
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-6">
+          <div className="space-y-12 pt-6">
             {filteredSubServices.length > 0 ? (
               filteredSubServices.map((sub) => (
-                <EmotionalCard
+                <div
                   key={sub.id}
-                  onClick={() => setActiveSubService(sub)}
-                  className="group"
+                  className="bg-[#150C25]/80 backdrop-blur-md rounded-3xl overflow-hidden border border-purple-900/50 shadow-2xl p-6 sm:p-8 space-y-6"
                 >
-                  <div className="relative h-64 w-full overflow-hidden bg-[#281A46]">
-                    <Image
-                      src={sub.image}
-                      alt={sub.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#3D2C66] via-transparent to-transparent opacity-80"></div>
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h4 className="text-lg font-bold text-white group-hover:text-purple-200 transition">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+                    <div className="relative h-56 sm:h-64 w-full overflow-hidden rounded-2xl bg-[#0F081C]">
+                      <Image
+                        src={sub.image}
+                        alt={sub.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="lg:col-span-2 space-y-3">
+                      <span className="inline-block px-3 py-1 bg-purple-950/80 text-purple-300 text-xs font-semibold rounded-full border border-purple-800/50">
+                        {sub.subtitle}
+                      </span>
+                      <h4 className="text-xl sm:text-2xl font-black text-white">
                         {sub.title}
                       </h4>
-                      <p className="text-xs text-purple-300/80 mt-2 line-clamp-2">{sub.description}</p>
-                    </div>
-                    <div className="mt-6 pt-4 border-t border-purple-600/40 flex items-center justify-between text-xs text-purple-300 font-semibold">
-                      <span className="text-purple-200 truncate max-w-[170px]">📍 {sub.cities.join(", ")}</span>
-                      <span className="text-purple-300 font-bold group-hover:translate-x-1.5 transition-transform duration-300 whitespace-nowrap flex items-center gap-1">
-                        View Details &rarr;
-                      </span>
+                      <p className="text-xs sm:text-sm text-purple-300/70 leading-relaxed">{sub.description}</p>
+                      <div className="flex items-center gap-2 pt-2">
+                        <span className="text-xs">📍</span>
+                        <span className="text-xs font-semibold text-purple-300">
+                          Available in: {sub.cities.join(", ")}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </EmotionalCard>
+
+                  {/* Single Continuous Horizontal Marquee Container for Cards */}
+                  {sub.additionalCards && sub.additionalCards.length > 0 && (
+                    <div className="pt-4 border-t border-purple-900/50 space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h5 className="text-sm font-bold text-white uppercase tracking-wider">Service Process & Details</h5>
+                        <span className="text-[10px] text-purple-400 bg-purple-950/60 px-2.5 py-1 rounded-full border border-purple-800/50">✨ Live Scrolling Sequence</span>
+                      </div>
+                      
+                      <div className="relative w-full overflow-hidden py-3 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+                        {/* 
+                          Using inline flex with standard CSS marquee keyframes 
+                          multiplying items x4 for seamless infinite track scrolling 
+                        */}
+                        <div className="flex gap-4 w-max animate-[card-marquee_25s_linear_infinite] hover:[animation-play-state:paused]">
+                          {[...sub.additionalCards, ...sub.additionalCards, ...sub.additionalCards, ...sub.additionalCards].map((card, i) => {
+                            const originalIndex = i % sub.additionalCards!.length;
+                            return (
+                              <div 
+                                key={`${card.id}-${i}`} 
+                                className="bg-[#1A102F]/90 border border-purple-900/60 p-4 rounded-2xl shadow-lg flex flex-col justify-between hover:border-purple-500 hover:scale-[1.02] transition-all duration-300 relative group w-72 shrink-0 overflow-hidden"
+                              >
+                                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gradient-to-br from-purple-600 to-indigo-700 text-white font-black text-xs flex items-center justify-center shadow-md border border-purple-400/40 group-hover:rotate-12 transition z-10">
+                                  0{originalIndex + 1}
+                                </div>
+                                
+                                <div className="mb-3">
+                                  <h6 className="text-xs font-bold text-white mb-1 pr-4">{card.title}</h6>
+                                  <p className="text-[11px] text-purple-300/70 leading-snug">{card.desc}</p>
+                                </div>
+
+                                <div className="mt-2 pt-2 border-t border-purple-900/40 overflow-hidden whitespace-nowrap relative">
+                                  <div className="inline-block animate-[marquee-text_8s_linear_infinite] text-[10px] text-purple-400 font-semibold uppercase tracking-wider">
+                                    ⚡ Verified Process &bull; Expert Execution &bull; 100% Quality Guaranteed &bull; Professional Service &bull;&nbsp;
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                    </div>
+                  )}
+                </div>
               ))
             ) : (
-              <div className="col-span-full text-center text-purple-300 py-12 bg-[#3D2C66] rounded-3xl border border-purple-600/40">
+              <div className="text-center text-purple-400 py-12 bg-[#150C25] rounded-3xl border border-purple-900/50 shadow-xl">
                 No sub-services found matching your search.
               </div>
             )}
           </div>
         </div>
+
+        <Footer />
       </div>
     );
   }
 
-  // -------------------------------------------------------------
-  // VIEW 1: Main Stack Carousel Page
-  // -------------------------------------------------------------
   return (
-    <div className="min-h-screen flex flex-col bg-[#302052] font-sans text-purple-100 selection:bg-purple-500 selection:text-white">
-      <nav className="w-full bg-[#3D2C66] shadow-md px-6 py-4 flex items-center justify-between border-b border-purple-600/40">
+    <div 
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      className="min-h-screen flex flex-col bg-[#0B0614] font-sans text-purple-100 selection:bg-purple-500 selection:text-white relative overflow-hidden"
+    >
+      <div 
+        className="absolute top-20 left-1/4 w-[28rem] h-[28rem] bg-purple-700/15 rounded-full blur-[130px] pointer-events-none transition-transform duration-300 ease-out"
+        style={{ transform: `translate(${mousePos.x * 2}px, ${mousePos.y * 2}px)` }}
+      ></div>
+      <div 
+        className="absolute bottom-10 right-1/4 w-[32rem] h-[32rem] bg-indigo-800/15 rounded-full blur-[150px] pointer-events-none transition-transform duration-300 ease-out"
+        style={{ transform: `translate(${-mousePos.x * 2}px, ${-mousePos.y * 2}px)` }}
+      ></div>
+
+      <nav className="w-full bg-[#130A24]/90 backdrop-blur-md shadow-lg px-6 py-4 flex items-center justify-between border-b border-purple-900/50 z-20">
         <div className="flex items-center gap-3">
           <a
             href="/"
-            className="px-4 py-2 bg-[#302052] text-purple-200 rounded-xl font-bold text-sm shadow hover:bg-[#281A46] transition flex items-center gap-2 border border-purple-500/60 hover:border-purple-300"
+            className="px-4 py-2 bg-[#1A102F] text-purple-200 rounded-xl font-bold text-sm shadow hover:bg-[#23153C] transition flex items-center gap-2 border border-purple-800/60"
           >
             🏠 Home
           </a>
-          <span className="text-xs font-semibold text-purple-300">Service Categories</span>
+          <span className="text-xs font-semibold text-purple-400">Service Categories</span>
         </div>
       </nav>
 
-      <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+      <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1 z-10">
         <section className="space-y-8">
           <div className="text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">Service Categories</h2>
-            <div className="w-16 h-1 bg-purple-400 mx-auto rounded-full"></div>
+            <div className="w-16 h-1 bg-purple-500 mx-auto rounded-full shadow-[0_0_15px_rgba(168,85,247,0.9)]"></div>
 
             <div className="max-w-md mx-auto pt-2">
               <div className="relative flex items-center">
-                <span className="absolute left-4 text-purple-300 font-bold">🔍</span>
+                <span className="absolute left-4 text-purple-400 font-bold">🔍</span>
                 <input
                   type="text"
                   placeholder="Search categories by name..."
                   value={categorySearch}
                   onChange={(e) => setCategorySearch(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3.5 bg-[#3D2C66] border border-purple-500/60 text-purple-100 placeholder-purple-300/60 rounded-2xl shadow-xl text-sm focus:outline-none focus:border-purple-300 focus:ring-1 focus:ring-purple-300 transition"
+                  className="w-full pl-12 pr-4 py-3.5 bg-[#160D2A] border border-purple-900/60 text-purple-100 placeholder-purple-400/50 rounded-2xl shadow-xl text-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/40 transition"
                 />
               </div>
             </div>
@@ -419,7 +380,7 @@ export default function CompleteCombinedComponent() {
           <div className="relative flex items-center justify-center py-6 min-h-[460px]">
             <button
               onClick={handlePrev}
-              className="absolute left-2 sm:left-12 z-30 w-12 h-12 bg-[#3D2C66] rounded-full shadow-lg border border-purple-500/60 flex items-center justify-center text-purple-200 hover:bg-[#281A46] hover:border-purple-300 transition cursor-pointer"
+              className="absolute left-2 sm:left-12 z-30 w-12 h-12 bg-[#1A102F] rounded-full shadow-lg border border-purple-900/60 flex items-center justify-center text-purple-200 hover:bg-[#23153C] hover:border-purple-500 transition cursor-pointer"
             >
               ❮
             </button>
@@ -435,13 +396,13 @@ export default function CompleteCombinedComponent() {
 
                 let transformStyle = "translate-x-0 scale-100 z-20 opacity-100 rotate-0";
                 if (offset === -1) {
-                  transformStyle = "-translate-x-28 scale-90 z-10 opacity-70 -rotate-6";
+                  transformStyle = "-translate-x-28 scale-90 z-10 opacity-60 -rotate-6";
                 } else if (offset === -2) {
-                  transformStyle = "-translate-x-48 scale-75 z-0 opacity-40 -rotate-12";
+                  transformStyle = "-translate-x-48 scale-75 z-0 opacity-30 -rotate-12";
                 } else if (offset === 1) {
-                  transformStyle = "translate-x-28 scale-90 z-10 opacity-70 rotate-6";
+                  transformStyle = "translate-x-28 scale-90 z-10 opacity-60 rotate-6";
                 } else if (offset === 2) {
-                  transformStyle = "translate-x-48 scale-75 z-0 opacity-40 rotate-12";
+                  transformStyle = "translate-x-48 scale-75 z-0 opacity-30 rotate-12";
                 }
 
                 if (Math.abs(offset) > 2) return null;
@@ -453,26 +414,26 @@ export default function CompleteCombinedComponent() {
                     <div
                       key={service.id}
                       onClick={() => setCurrentIndex(index)}
-                      className={`absolute transition-all duration-500 ease-out cursor-pointer w-72 sm:w-80 h-[380px] rounded-3xl overflow-hidden shadow-2xl border border-purple-500/60 bg-[#3D2C66] flex flex-col justify-end p-6 transform ${transformStyle} ${
-                        isCenter ? "ring-2 ring-purple-300/80 border-purple-300 shadow-2xl hover:scale-105" : "hover:opacity-90"
+                      className={`absolute transition-all duration-500 ease-out cursor-pointer w-72 sm:w-80 h-[380px] rounded-3xl overflow-hidden shadow-2xl border border-purple-900/60 bg-[#160D2A] flex flex-col justify-end p-6 transform ${transformStyle} ${
+                        isCenter ? "ring-2 ring-purple-500 border-purple-400 shadow-[0_0_30px_rgba(168,85,247,0.35)]" : ""
                       }`}
                     >
-                      <div className="absolute inset-0 z-0 bg-[#281A46]">
-                        <Image src={service.image} alt={service.title} fill sizes="100vw" className="object-cover opacity-85" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#302052] via-[#302052]/70 to-transparent"></div>
+                      <div className="absolute inset-0 z-0 bg-[#0F081C]">
+                        <Image src={service.image} alt={service.title} fill sizes="100vw" className="object-cover opacity-75" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0614] via-[#0B0614]/70 to-transparent"></div>
                       </div>
 
                       <div className="relative z-10 space-y-2 text-white">
-                        <p className="text-[10px] font-bold tracking-wider uppercase text-purple-300">{service.subtitle}</p>
+                        <p className="text-[10px] font-bold tracking-wider uppercase text-purple-400">{service.subtitle}</p>
                         <h3 className="text-xl font-black">{service.title}</h3>
-                        <p className="text-xs text-purple-200/80 line-clamp-2">{service.description}</p>
+                        <p className="text-xs text-purple-300/80 line-clamp-2">{service.description}</p>
 
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             setActiveCategory(service);
                           }}
-                          className="mt-3 inline-block px-4.5 py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-purple-900/40 transition cursor-pointer"
+                          className="mt-3 inline-block px-4.5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition cursor-pointer"
                         >
                           LEARN MORE
                         </button>
@@ -485,7 +446,7 @@ export default function CompleteCombinedComponent() {
 
             <button
               onClick={handleNext}
-              className="absolute right-2 sm:right-12 z-30 w-12 h-12 bg-[#3D2C66] rounded-full shadow-lg border border-purple-500/60 flex items-center justify-center text-purple-200 hover:bg-[#281A46] hover:border-purple-300 transition cursor-pointer"
+              className="absolute right-2 sm:right-12 z-30 w-12 h-12 bg-[#1A102F] rounded-full shadow-lg border border-purple-900/60 flex items-center justify-center text-purple-200 hover:bg-[#23153C] hover:border-purple-500 transition cursor-pointer"
             >
               ❯
             </button>
@@ -498,14 +459,52 @@ export default function CompleteCombinedComponent() {
                 onClick={() => setCurrentIndex(idx)}
                 className={`transition-all rounded-full cursor-pointer ${
                   currentIndex === idx
-                    ? "w-8 h-2.5 bg-purple-300"
-                    : "w-2.5 h-2.5 bg-purple-900 hover:bg-purple-500"
+                    ? "w-8 h-2.5 bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.9)]"
+                    : "w-2.5 h-2.5 bg-purple-950 hover:bg-purple-700"
                 }`}
               ></button>
             ))}
           </div>
         </section>
       </div>
+
+      <Footer />
+
+      {/* Global CSS for Continuous Marquee Animations */}
+      <style jsx global>{`
+        @keyframes card-marquee {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        @keyframes marquee-text {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="w-full bg-[#130A24]/90 backdrop-blur-md text-purple-300/80 py-8 px-6 border-t border-purple-900/50 mt-auto shadow-2xl z-20">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+        <div>
+          <h3 className="text-lg font-bold text-white">Gharplans Services</h3>
+          <p className="text-xs text-purple-400/60 mt-1">Providing professional home and construction solutions you can trust.</p>
+        </div>
+        <div className="text-xs text-purple-400/50">
+          &copy; {new Date().getFullYear()} Gharplans. All rights reserved.
+        </div>
+      </div>
+    </footer>
   );
 }
