@@ -217,33 +217,53 @@ export default function Navbar() {
           </Link>
 
           {/* Navigation Links */}
-          <nav className="hidden xl:flex items-center gap-1 text-sm font-medium">
+          <nav className="hidden xl:flex items-center gap-1.5 text-sm font-medium">
             <Link
               href="/"
-              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md -900/50"
+              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
             >
               House Designs
             </Link>
-            <Link href="/shop" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link
+              href="/shop"
+              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+            >
               Shop
             </Link>
-            <Link href="/interior" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link
+              href="/interior"
+              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+            >
               Interior Designs
             </Link>
-            <Link href="/blog" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link
+              href="/blog"
+              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+            >
               Blog
             </Link>
-            <Link href="/pricing" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link
+              href="/pricing"
+              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+            >
               Pricing
             </Link>
-            <Link href="/services" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link
+              href="/services"
+              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+            >
               Services
             </Link>
-            {/* Cone Page Link */}
-            <Link href="/cone" className="flex items-center gap-1 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link
+              href="/cone"
+              className="flex items-center gap-1 bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+            >
               Cone
             </Link>
-            <Link href="/contact" className="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">
+            <Link
+              href="/contact"
+              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+            >
               Contact Us
             </Link>
           </nav>
