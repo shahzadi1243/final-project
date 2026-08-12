@@ -15,13 +15,13 @@ export default function HouseDesignsPage() {
       <HouseSlider />
       <HouseCatalog/>
       {/* <HouseFilterSection /> */}
-      <HousePlansPortal />
-      <BacksideSittingSection />
+ <BuildingSectionsComponent/>
+     <BacksideSittingSection />
     <TvLoungeSection/>
     <SwimmingPoolSection/>
     <DiningRoomSection/>
     <ParkingSection/>
-    <BuildingSectionsComponent/>
+    <HousePlansPortal />
     </>
   );
 }
