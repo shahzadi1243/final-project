@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="w-full bg-gradient-to-r from-gray-950 via-indigo-950 to-gray-950 text-gray-200 py-6 px-4 mt-auto border-t border-indigo-500/30 shadow-2xl">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
         <div>
-          <h3 className="text-sm font-bold text-indigo-400">GharPlans Pakistan</h3>
+          <h3 className="text-sm font-bold text-indigo-400">House Designing Pakistan</h3>
           <p className="text-xs text-gray-300">📞 +92 3| ✉️ shahzadirai55@gmail.com</p>
           <p className="text-[10px] text-gray-400">© 2026 GharPlans Pakistan. All rights reserved.</p>
         </div>

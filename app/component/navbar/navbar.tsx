@@ -220,7 +220,7 @@ export default function Navbar() {
           <nav className="hidden xl:flex items-center gap-1 text-sm font-medium">
             <Link
               href="/"
-              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md shadow-purple-900/50"
+              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md -900/50"
             >
               House Designs
             </Link>
