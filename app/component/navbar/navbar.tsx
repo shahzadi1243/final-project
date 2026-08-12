@@ -217,52 +217,52 @@ export default function Navbar() {
           </Link>
 
           {/* Navigation Links */}
-          <nav className="hidden xl:flex items-center gap-1.5 text-sm font-medium">
+          <nav className="hidden xl:flex items-center gap-1 text-sm font-medium">
             <Link
               href="/"
-              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+              className="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-purple-600 transition shadow-sm"
             >
               House Designs
             </Link>
             <Link
               href="/shop"
-              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+              className="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-purple-600 transition shadow-sm"
             >
               Shop
             </Link>
             <Link
               href="/interior"
-              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+              className="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-purple-600 transition shadow-sm"
             >
               Interior Designs
             </Link>
             <Link
               href="/blog"
-              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+              className="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-purple-600 transition shadow-sm"
             >
               Blog
             </Link>
             <Link
               href="/pricing"
-              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+              className="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-purple-600 transition shadow-sm"
             >
               Pricing
             </Link>
             <Link
               href="/services"
-              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+              className="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-purple-600 transition shadow-sm"
             >
               Services
             </Link>
             <Link
               href="/cone"
-              className="flex items-center gap-1 bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+              className="flex items-center gap-1 px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-purple-600 transition shadow-sm"
             >
               Cone
             </Link>
             <Link
               href="/contact"
-              className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition shadow-md"
+              className="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-purple-600 transition shadow-sm"
             >
               Contact Us
             </Link>
